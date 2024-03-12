@@ -1,4 +1,4 @@
-package com.example.cardsocial.ui.theme
+package com.example.codegenius.feature.aluno.course.view.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

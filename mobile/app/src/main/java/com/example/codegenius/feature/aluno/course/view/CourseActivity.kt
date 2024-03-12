@@ -1,7 +1,7 @@
 package com.example.codegenius.feature.aluno.course.view.ui
 
-import android.app.Activity
+import androidx.activity.ComponentActivity
 
 
-class CourseActivity : Activity()  {
+class CourseActivity : ComponentActivity()  {
 }

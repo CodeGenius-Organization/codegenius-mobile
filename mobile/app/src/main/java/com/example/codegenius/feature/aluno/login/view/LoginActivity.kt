@@ -1,6 +1,6 @@
 package com.example.codegenius.feature.aluno.login.view
 
-import android.app.Activity
+import androidx.activity.ComponentActivity
 
-class LoginActivity : Activity() {
+class LoginActivity : ComponentActivity() {
 }
