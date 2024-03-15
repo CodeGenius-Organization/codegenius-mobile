@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -24,22 +23,77 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LoginBox() {
+fun RegisterBox() {
     var teste by remember {
         mutableStateOf("")
     }
-
-    Column (
+    Column(
         modifier = Modifier
             .padding(horizontal = 30.dp)
-    ){
+    ) {
 
         Text(
-            text = "Olá novamente!",
+            text = "Olá!",
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 18.sp,
             fontWeight = FontWeight.Light
+        )
+
+        Text(
+            modifier = Modifier.padding(top = 40.dp),
+            text = "Nome:",
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.White,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Light
+        )
+
+        OutlinedTextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+                .background(
+                    Color.Transparent
+                ),
+            value = teste,
+            onValueChange = {
+                teste = it
+            },
+            shape = RoundedCornerShape(100),
+            placeholder = {
+                Text(
+                    "Digite seu nome"
+                )
+            }
+        )
+
+        Text(
+            modifier = Modifier.padding(top = 40.dp),
+            text = "Sobrenome:",
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.White,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Light
+        )
+
+        OutlinedTextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+                .background(
+                    Color.Transparent
+                ),
+            value = teste,
+            onValueChange = {
+                teste = it
+            },
+            shape = RoundedCornerShape(100),
+            placeholder = {
+                Text(
+                    "Digite seu sobrenome"
+                )
+            }
         )
 
         Text(
@@ -81,8 +135,11 @@ fun LoginBox() {
 
         OutlinedTextField(
             modifier = Modifier
-                .width(360.dp)
-                .padding(top = 8.dp),
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+                .background(
+                    Color.Transparent
+                ),
             value = teste,
             onValueChange = {
                 teste = it
@@ -90,20 +147,37 @@ fun LoginBox() {
             shape = RoundedCornerShape(100),
             placeholder = {
                 Text(
-                    "Digite seu e-mail"
+                    "Digite sua senha"
                 )
             }
         )
 
         Text(
-            modifier = Modifier
-                .padding(top = 20.dp)
-                .align(alignment = Alignment.End),
-            text = "Esqueceu sua senha?",
-            style = MaterialTheme.typography.displaySmall,
+            modifier = Modifier.padding(top = 40.dp),
+            text = "Confirmação de senha:",
+            style = MaterialTheme.typography.titleMedium,
             color = Color.White,
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Light
+        )
+
+        OutlinedTextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+                .background(
+                    Color.Transparent
+                ),
+            value = teste,
+            onValueChange = {
+                teste = it
+            },
+            shape = RoundedCornerShape(100),
+            placeholder = {
+                Text(
+                    "Digite sua senha"
+                )
+            }
         )
 
         Button(
@@ -113,22 +187,24 @@ fun LoginBox() {
                 .padding(top = 60.dp, bottom = 20.dp),
             onClick = { /*TODO*/ }) {
 
-            Text(text = "ENTRAR")
+            Text(text = "CADASTRAR")
         }
 
         Text(
             modifier = Modifier
-                .align(alignment = Alignment.CenterHorizontally),
-            text = "Não possui uma conta? Cadastre-se aqui",
+                .align(alignment = Alignment.CenterHorizontally)
+                .padding(bottom = 20.dp),
+            text = "Já tem cadastro? Entre aqui",
             color = Color.White,
             fontSize = 15.sp,
             fontWeight = FontWeight.Light
         )
+
     }
 }
 
 @Preview()
 @Composable
-fun LoginBoxPreview() {
-    LoginBox()
+fun RegisterBoxPreview() {
+    RegisterBox()
 }
