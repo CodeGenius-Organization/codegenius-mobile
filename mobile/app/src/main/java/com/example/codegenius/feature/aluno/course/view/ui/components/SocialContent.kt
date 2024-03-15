@@ -73,7 +73,6 @@ fun SocialContent(
                 "Seguir"
             }
             Text(
-
                 text = buttonText,
                 style = MaterialTheme.typography.bodySmall,
                 fontSize = 10.sp

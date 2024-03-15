@@ -1,25 +1,14 @@
-package com.example.mobile_tela_login_codegenius
+package com.example.codegenius.feature.aluno.login.view.ui.components
 
-import android.os.Bundle
-import android.text.Layout
-import android.view.RoundedCorner
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,73 +17,24 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mobile_tela_login_codegenius.ui.theme.MobiletelalogincodegeniusTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MobiletelalogincodegeniusTheme {
-                appPreview()
-            }
-        }
-    }
-}
 
 @Composable
-fun App(
-    @DrawableRes imagem: Int
-){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(red = 12, green = 15, blue = 26))
-
-    ) {
-        Row(
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .height(200.dp)
-        ) {
-            Image(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically),
-                painter = painterResource(
-                    id = R.drawable.logo_1),
-                contentDescription = null
-            )
-
-            Text(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .padding(start = 8.dp),
-                text = "CodeGenius",
-                style = MaterialTheme.typography.titleMedium,
-                color = Color.White,
-                fontWeight = FontWeight.Light,
-                fontSize = 18.sp,
-            )
-        }
-    }
-
+fun LoginBox() {
     var email by remember {
         mutableStateOf("")
     }
 
     Column (
         modifier = Modifier
+            .padding(horizontal = 30.dp)
     ){
 
         Text(
-            modifier = Modifier.padding(top = 200.dp, start = 30.dp),
             text = "Olá novamente!",
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
@@ -103,26 +43,26 @@ fun App(
         )
 
         Text(
-            modifier = Modifier.padding(top = 40.dp, start = 30.dp),
+            modifier = Modifier.padding(top = 40.dp),
             text = "E-mail",
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Light
         )
 
         OutlinedTextField(
             modifier = Modifier
-                .width(360.dp)
-                .padding(start = 30.dp, top = 8.dp)
+                .fillMaxWidth()
+                .padding(top = 8.dp)
                 .background(
-                    Color.Transparent,
-                    RoundedCornerShape(20.dp)
+                    Color.Transparent
                 ),
             value = email,
             onValueChange = {
                 email = it
             },
+            shape = RoundedCornerShape(20.dp),
             placeholder = {
                 Text(
                     "Digite seu e-mail"
@@ -131,22 +71,23 @@ fun App(
         )
 
         Text(
-            modifier = Modifier.padding(top = 40.dp, start = 30.dp),
+            modifier = Modifier.padding(top = 40.dp),
             text = "Senha",
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Light
         )
 
         OutlinedTextField(
             modifier = Modifier
                 .width(360.dp)
-                .padding(start = 30.dp, top = 8.dp),
-                    value = email,
+                .padding(top = 8.dp),
+            value = email,
             onValueChange = {
                 email = it
             },
+            shape = RoundedCornerShape(20.dp),
             placeholder = {
                 Text(
                     "Digite seu e-mail"
@@ -155,11 +96,13 @@ fun App(
         )
 
         Text(
-            modifier = Modifier.padding(top = 40.dp, start = 200.dp),
+            modifier = Modifier
+                .padding(top = 20.dp)
+                .align(alignment = Alignment.End),
             text = "Esqueceu sua senha?",
             style = MaterialTheme.typography.displaySmall,
             color = Color.White,
-            fontSize = 15.sp,
+            fontSize = 14.sp,
             fontWeight = FontWeight.Light
         )
 
@@ -167,27 +110,25 @@ fun App(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(alignment = Alignment.CenterHorizontally)
-                .padding(20.dp),
+                .padding(top = 60.dp, bottom = 20.dp),
             onClick = { /*TODO*/ }) {
 
             Text(text = "ENTRAR")
         }
 
         Text(
-            modifier = Modifier.padding(start = 65.dp),
-            text = "Não possui uma conta?Cadastre-se aqui",
+            modifier = Modifier
+                .align(alignment = Alignment.CenterHorizontally),
+            text = "Não possui uma conta? Cadastre-se aqui",
             color = Color.White,
             fontSize = 15.sp,
             fontWeight = FontWeight.Light
         )
     }
-
-
 }
 
-
-@Preview(showBackground = true)
+@Preview()
 @Composable
-fun appPreview(){
-    App(R.drawable.logo_1)
+fun LoginBoxPreview() {
+    LoginBox()
 }
