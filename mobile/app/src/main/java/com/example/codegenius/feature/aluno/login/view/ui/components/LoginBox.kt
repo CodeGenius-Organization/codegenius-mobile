@@ -24,13 +24,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LoginBox() {
+fun LoginBox(
+    modifier: Modifier = Modifier,
+) {
     var teste by remember {
         mutableStateOf("")
     }
 
     Column (
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 30.dp)
     ){
 

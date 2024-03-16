@@ -24,9 +24,11 @@ import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
 
 @Composable
-fun CorporateInsignia() {
+fun CorporateInsignia(
+    modifier: Modifier = Modifier,
+) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier

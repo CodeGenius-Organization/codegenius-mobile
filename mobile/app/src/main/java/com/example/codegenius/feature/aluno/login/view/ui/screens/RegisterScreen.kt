@@ -13,9 +13,11 @@ import com.example.codegenius.feature.aluno.login.view.ui.components.CorporateIn
 import com.example.codegenius.feature.aluno.login.view.ui.components.RegisterBox
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .background(Color(red = 12, green = 15, blue = 26))

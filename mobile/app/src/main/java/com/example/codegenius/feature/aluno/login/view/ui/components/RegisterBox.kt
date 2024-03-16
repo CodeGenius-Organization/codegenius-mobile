@@ -23,12 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun RegisterBox() {
+fun RegisterBox(
+    modifier: Modifier = Modifier,
+) {
     var teste by remember {
         mutableStateOf("")
     }
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 30.dp)
     ) {
 

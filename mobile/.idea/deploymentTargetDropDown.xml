@@ -5,6 +5,9 @@
       <entry key="CorporateInsigniaPreview">
         <State />
       </entry>
+      <entry key="LoadingScreenPreview">
+        <State />
+      </entry>
       <entry key="LoginActivity">
         <State />
       </entry>
