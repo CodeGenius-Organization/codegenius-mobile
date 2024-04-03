@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">codegenius</string>
+    <string name="app_name">CodeGenius</string>
+    <string name="app_version">VERSION 1.0</string>
+
+    <!-- Conteudo do curso -->
+    <string name="course_content_label">Feito por:</string>
+
+    <!-- Box do login -->
+    <string name="login_label_welcome">Olá novamente!</string>
+    <string name="login_label_email">E-mail:</string>
+    <string name="login_placeholder_email">Digite seu e-mail</string>
+    <string name="login_label_password">Senha:</string>
+    <string name="login_placeholder_password">Digite seu e-mail</string>
+    <string name="login_link_forgot_password">Esqueceu sua senha?</string>
+    <string name="login_button">ENTRAR</string>
+    <string name="login_link_register">Não possui uma conta? Cadastre-se aqui</string>
+
+    <!-- Box do register -->
+    <string name="register_label_welcome">Olá!</string>
+    <string name="register_label_name">Nome:</string>
+    <string name="register_placeholder_name">Digite seu nome</string>
+    <string name="register_label_lastname">Sobrenome:</string>
+    <string name="register_placeholder_lastname">Digite seu sobrenome</string>
+    <string name="register_label_email">E-mail:</string>
+    <string name="register_placeholder_email">Digite seu e-mail</string>
+    <string name="register_label_password">Senha:</string>
+    <string name="register_placeholder_password">Digite sua senha</string>
+    <string name="register_label_confirm_password">Confirmação de senha:</string>
+    <string name="register_placeholder_confirm_password">Digite sua senha</string>
+    <string name="register_button">CADASTRAR</string>
+    <string name="register_link_login">Já tem cadastro? Entre aqui</string>
 </resources>

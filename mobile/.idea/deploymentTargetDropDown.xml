@@ -5,10 +5,16 @@
       <entry key="CorporateInsigniaPreview">
         <State />
       </entry>
+      <entry key="CourseContentPreview">
+        <State />
+      </entry>
       <entry key="LoadingScreenPreview">
         <State />
       </entry>
       <entry key="LoginActivity">
+        <State />
+      </entry>
+      <entry key="LoginBoxPreview">
         <State />
       </entry>
       <entry key="app">

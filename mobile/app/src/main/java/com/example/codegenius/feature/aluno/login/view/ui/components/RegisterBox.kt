@@ -17,10 +17,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.codegenius.R
 
 @Composable
 fun RegisterBox(
@@ -35,7 +37,7 @@ fun RegisterBox(
     ) {
 
         Text(
-            text = "Olá!",
+            text = stringResource(R.string.register_label_welcome),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 18.sp,
@@ -44,7 +46,7 @@ fun RegisterBox(
 
         Text(
             modifier = Modifier.padding(top = 40.dp),
-            text = "Nome:",
+            text = stringResource(R.string.register_label_name),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -65,14 +67,14 @@ fun RegisterBox(
             shape = RoundedCornerShape(100),
             placeholder = {
                 Text(
-                    "Digite seu nome"
+                    stringResource(R.string.register_placeholder_name)
                 )
             }
         )
 
         Text(
             modifier = Modifier.padding(top = 40.dp),
-            text = "Sobrenome:",
+            text = stringResource(R.string.register_label_lastname),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -93,14 +95,14 @@ fun RegisterBox(
             shape = RoundedCornerShape(100),
             placeholder = {
                 Text(
-                    "Digite seu sobrenome"
+                    stringResource(R.string.register_placeholder_lastname)
                 )
             }
         )
 
         Text(
             modifier = Modifier.padding(top = 40.dp),
-            text = "E-mail:",
+            text = stringResource(R.string.register_label_email),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -121,14 +123,14 @@ fun RegisterBox(
             shape = RoundedCornerShape(100),
             placeholder = {
                 Text(
-                    "Digite seu e-mail"
+                    stringResource(R.string.register_placeholder_email)
                 )
             }
         )
 
         Text(
             modifier = Modifier.padding(top = 40.dp),
-            text = "Senha:",
+            text = stringResource(R.string.register_label_password),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -149,14 +151,14 @@ fun RegisterBox(
             shape = RoundedCornerShape(100),
             placeholder = {
                 Text(
-                    "Digite sua senha"
+                    stringResource(R.string.register_placeholder_password)
                 )
             }
         )
 
         Text(
             modifier = Modifier.padding(top = 40.dp),
-            text = "Confirmação de senha:",
+            text = stringResource(R.string.register_label_confirm_password),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -177,7 +179,7 @@ fun RegisterBox(
             shape = RoundedCornerShape(100),
             placeholder = {
                 Text(
-                    "Digite sua senha"
+                    stringResource(R.string.register_placeholder_confirm_password)
                 )
             }
         )
@@ -189,14 +191,14 @@ fun RegisterBox(
                 .padding(top = 60.dp, bottom = 20.dp),
             onClick = { /*TODO*/ }) {
 
-            Text(text = "CADASTRAR")
+            Text(text = stringResource(R.string.register_button))
         }
 
         Text(
             modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)
                 .padding(bottom = 20.dp),
-            text = "Já tem cadastro? Entre aqui",
+            text = stringResource(R.string.register_link_login),
             color = Color.White,
             fontSize = 15.sp,
             fontWeight = FontWeight.Light
@@ -205,7 +207,7 @@ fun RegisterBox(
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun RegisterBoxPreview() {
     RegisterBox()
