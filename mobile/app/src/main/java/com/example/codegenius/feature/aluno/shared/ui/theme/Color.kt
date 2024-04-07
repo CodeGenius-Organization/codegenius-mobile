@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.course.view.ui.theme
+package com.example.codegenius.feature.aluno.shared.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -12,3 +12,4 @@ val Pink40 = Color(0xFF7D5260)
 
 val pinkGenius = Color(0xFFD868FF)
 val purpleGenius = Color(0XFF7F60BC)
+val BackgroundGenius = Color(0XFF0C0F1A)

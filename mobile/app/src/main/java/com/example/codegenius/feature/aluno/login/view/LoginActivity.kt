@@ -17,12 +17,12 @@ class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            App()
+            Login()
         }
     }
 
     @Composable
-    fun App() {
+    fun Login() {
         MaterialTheme {
             Surface(
                 modifier = Modifier

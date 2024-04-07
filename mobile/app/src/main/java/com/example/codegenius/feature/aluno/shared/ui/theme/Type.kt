@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.course.view.ui.theme
+package com.example.codegenius.feature.aluno.shared.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
