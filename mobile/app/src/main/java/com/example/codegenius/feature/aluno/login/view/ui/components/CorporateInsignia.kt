@@ -1,6 +1,7 @@
 package com.example.codegenius.feature.aluno.login.view.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,41 +23,35 @@ import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
 
 @Composable
-fun CorporateInsignia(
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier.fillMaxWidth()
+fun CorporateInsignia() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(
+           space =  8.dp,
+           alignment =  Alignment.CenterHorizontally
+        ),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
+        Image(
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .height(200.dp)
-        ) {
-            Image(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .size(33.dp),
-                painter = painterResource(id = R.drawable.logo_1),
-                contentDescription = null
-            )
-
-            Text(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .padding(start = 8.dp),
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.titleMedium,
-                color = Color.White,
-                fontWeight = FontWeight.Light,
-                fontSize = 24.sp,
-            )
-        }
+                .size(35.dp),
+            painter = painterResource(id = R.drawable.codegenius_logo),
+            contentDescription = null
+        )
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.White,
+            fontWeight = FontWeight.Light,
+            fontSize = 24.sp,
+        )
     }
 }
 
+
 @Preview
 @Composable
-fun CorporateInsigniaPreview(){
+fun CorporateInsigniaPreview() {
     CorporateInsignia()
 }

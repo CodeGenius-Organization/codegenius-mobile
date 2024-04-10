@@ -1,9 +1,9 @@
 package com.example.codegenius.feature.aluno.shared.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,22 +24,21 @@ fun CorporativeInsignia(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        Row {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(
+                15.dp
+            )
+        ) {
             Image(
                 modifier = Modifier
-                    .align(alignment = Alignment.CenterVertically)
-                    .size(33.dp),
+                    .size(35.dp),
                 painter = painterResource(
-                    id = R.drawable.logo_1),
+                    id = R.drawable.codegenius_logo),
                 contentDescription = null
             )
-
-            Column(
-                modifier = Modifier.padding(start = 6.dp)
-            ) {
+            Column {
                 Text(
-                    modifier = Modifier
-                        .padding(start = 8.dp),
                     text = stringResource(R.string.app_name),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.White,
@@ -48,8 +47,6 @@ fun CorporativeInsignia(
                 )
 
                 Text(
-                    modifier = Modifier
-                        .padding(start = 8.dp),
                     text = stringResource(R.string.app_version),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.White,

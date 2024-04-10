@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.feature.aluno.course.model.UserModel
 import com.example.codegenius.feature.aluno.course.sampleData.socialUsersMock
-import com.example.codegenius.feature.aluno.course.view.ui.theme.CardSocialTheme
+import com.example.codegenius.feature.aluno.shared.ui.theme.CardSocialTheme
 
 @Composable
 fun SocialContentList(

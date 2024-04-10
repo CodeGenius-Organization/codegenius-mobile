@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.course.view.ui.theme.pinkGenius
-import com.example.codegenius.feature.aluno.course.view.ui.theme.purpleGenius
+import com.example.codegenius.feature.aluno.shared.ui.theme.pinkGenius
+import com.example.codegenius.feature.aluno.shared.ui.theme.purpleGenius
 
 @Composable
 fun CourseContent(

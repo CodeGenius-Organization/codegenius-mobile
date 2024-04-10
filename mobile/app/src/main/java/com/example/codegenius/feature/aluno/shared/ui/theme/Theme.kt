@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.course.view.ui.theme
+package com.example.codegenius.feature.aluno.shared.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -31,7 +31,7 @@ private val LightColorScheme = lightColorScheme(
 fun CardSocialTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

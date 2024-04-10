@@ -3,7 +3,6 @@ package com.example.codegenius.feature.aluno.shared.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,41 +10,35 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.R
 import com.example.codegenius.feature.aluno.shared.ui.components.CorporativeInsignia
+import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 
 @Composable
-fun LoadingScreen(
-    modifier: Modifier = Modifier
-) {
+fun SplashScreen() {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
-            .background(Color(red = 12, green = 15, blue = 26)),
-        verticalArrangement = Arrangement.Center
+            .background(BackgroundGenius),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
-            modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
-        ) {
-            CorporativeInsignia()
-        }
+        CorporativeInsignia()
         Image(
             modifier = Modifier
-                .size(33.dp)
-                .padding(top = 12.dp)
-                .align(alignment = Alignment.CenterHorizontally),
+            .size(50.dp)
+            .padding(top = 10.dp),
             painter = painterResource(id = R.drawable.loading_1),
             contentDescription = null
         )
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
-fun LoadingScreenPreview() {
-    LoadingScreen()
+fun SplashScreenPreview() {
+    SplashScreen()
 }
