@@ -105,15 +105,13 @@ fun LoginBox(
             }
         )
 
-        Text(
+        ClickableText(
             modifier = Modifier
                 .padding(top = 20.dp)
                 .align(alignment = Alignment.End),
-            text = stringResource(R.string.login_link_forgot_password),
-            style = MaterialTheme.typography.displaySmall,
-            color = Color.White,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Light
+            text = AnnotatedString(stringResource(R.string.login_link_forgot_password)),
+            style = TextStyle(color = Color.White),
+            onClick = { /*TODO*/ }
         )
 
         Button(
