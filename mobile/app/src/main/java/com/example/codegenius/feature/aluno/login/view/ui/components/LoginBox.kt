@@ -128,7 +128,8 @@ fun LoginBox(
 
         ClickableText(
             modifier = Modifier
-                .align(alignment = Alignment.CenterHorizontally),
+                .align(alignment = Alignment.CenterHorizontally)
+                .padding(bottom = 20.dp),
             text = AnnotatedString(stringResource(R.string.login_link_register)),
             style = TextStyle(color = Color.White),
             onClick = {

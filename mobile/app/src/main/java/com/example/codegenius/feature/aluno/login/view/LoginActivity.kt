@@ -27,8 +27,9 @@ class LoginActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = AppDestination.Login.route) {
                     composable(AppDestination.Login.route) {
                         LoginScreen(onNavigateToRegister = {
-                            navController.navigate(AppDestination.Register.route)
-                        })
+                                navController.navigate(AppDestination.Register.route)
+                            }
+                        )
                     }
                     composable(AppDestination.Register.route) {
                         RegisterScreen(onNavigateToLogin = {

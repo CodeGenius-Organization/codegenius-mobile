@@ -25,8 +25,9 @@ fun LoginScreen(
             .verticalScroll(rememberScrollState())
             .background(Color(red = 12, green = 15, blue = 26))
     ) {
-        CorporateInsignia(Modifier
-            .padding(30.dp))
+        CorporateInsignia(
+            Modifier.padding(60.dp)
+        )
         LoginBox(onNavigateToRegister = onNavigateToRegister)
     }
 }
