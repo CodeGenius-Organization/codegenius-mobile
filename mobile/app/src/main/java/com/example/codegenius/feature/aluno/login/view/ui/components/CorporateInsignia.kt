@@ -23,9 +23,11 @@ import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
 
 @Composable
-fun CorporateInsignia() {
+fun CorporateInsignia(
+    modifier: Modifier = Modifier
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(
            space =  8.dp,

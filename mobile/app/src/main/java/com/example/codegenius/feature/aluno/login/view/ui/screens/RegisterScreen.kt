@@ -14,7 +14,8 @@ import com.example.codegenius.feature.aluno.login.view.ui.components.RegisterBox
 
 @Composable
 fun RegisterScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onNavigateToLogin: () -> Unit= {}
 ) {
     Column(
         modifier = modifier
@@ -23,7 +24,7 @@ fun RegisterScreen(
             .background(Color(red = 12, green = 15, blue = 26))
     ) {
         CorporateInsignia()
-        RegisterBox()
+        RegisterBox(onNavigateToLogin = onNavigateToLogin)
     }
 }
 

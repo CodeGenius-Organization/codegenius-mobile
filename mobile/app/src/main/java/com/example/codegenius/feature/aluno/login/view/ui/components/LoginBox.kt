@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -19,6 +21,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,6 +33,7 @@ import com.example.codegenius.R
 @Composable
 fun LoginBox(
     modifier: Modifier = Modifier,
+    onNavigateToRegister: () -> Unit = {}
 ) {
     var teste by remember {
         mutableStateOf("")
@@ -48,7 +54,7 @@ fun LoginBox(
 
         Text(
             modifier = Modifier.padding(top = 40.dp),
-            text = stringResource(R.string.login_label_welcome),
+            text = stringResource(R.string.login_label_email),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -120,13 +126,14 @@ fun LoginBox(
             Text(text = stringResource(R.string.login_button))
         }
 
-        Text(
+        ClickableText(
             modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally),
-            text = stringResource(R.string.login_link_register),
-            color = Color.White,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Light
+            text = AnnotatedString(stringResource(R.string.login_link_register)),
+            style = TextStyle(color = Color.White),
+            onClick = {
+                onNavigateToRegister()
+            }
         )
     }
 }
