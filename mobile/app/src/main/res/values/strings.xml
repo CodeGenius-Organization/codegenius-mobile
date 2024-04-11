@@ -10,7 +10,11 @@
     <string name="login_label_email">E-mail:</string>
     <string name="login_placeholder_email">Digite seu e-mail</string>
     <string name="login_label_password">Senha:</string>
+<<<<<<< HEAD
     <string name="login_placeholder_password">Digite sua senha</string>
+=======
+    <string name="login_placeholder_password">Digite seu senha</string>
+>>>>>>> c10111ba234163742c94d0248298d56702702415
     <string name="login_link_forgot_password">Esqueceu sua senha?</string>
     <string name="login_button">ENTRAR</string>
     <string name="login_link_register">Não possui uma conta? Cadastre-se aqui</string>

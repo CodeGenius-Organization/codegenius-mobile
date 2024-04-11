@@ -18,7 +18,14 @@ import com.example.codegenius.feature.aluno.login.view.ui.components.LoginBox
 import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 
 @Composable
+<<<<<<< HEAD
 fun LoginScreen() {
+=======
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    onNavigateToRegister: () -> Unit= {}
+) {
+>>>>>>> c10111ba234163742c94d0248298d56702702415
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -29,8 +36,10 @@ fun LoginScreen() {
             alignment = Alignment.CenterVertically
         )
     ) {
-        CorporateInsignia()
-        LoginBox()
+        CorporateInsignia(
+            Modifier.padding(60.dp)
+        )
+        LoginBox(onNavigateToRegister = onNavigateToRegister)
     }
 }
 
