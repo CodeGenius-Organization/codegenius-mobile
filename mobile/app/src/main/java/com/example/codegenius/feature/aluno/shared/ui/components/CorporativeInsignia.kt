@@ -34,7 +34,7 @@ fun CorporativeInsignia(
                 modifier = Modifier
                     .size(35.dp),
                 painter = painterResource(
-                    id = R.drawable.codegenius_logo),
+                    id = R.drawable.codegenius_logo_vector),
                 contentDescription = null
             )
             Column {
