@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -22,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,29 +30,18 @@ import com.example.codegenius.R
 
 @Composable
 fun LoginBox(
-    modifier: Modifier = Modifier,
     onNavigateToRegister: () -> Unit = {}
 ) {
     var teste by remember {
         mutableStateOf("")
     }
-
-    Column (
-        modifier = modifier
+    Column(
+        modifier = Modifier
             .padding(horizontal = 30.dp)
-    ){
-
+    ) {
         Text(
+            modifier = Modifier.padding(bottom = 32.dp),
             text = stringResource(R.string.login_label_welcome),
-            style = MaterialTheme.typography.titleMedium,
-            color = Color.White,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Light
-        )
-
-        Text(
-            modifier = Modifier.padding(top = 40.dp),
-            text = stringResource(R.string.login_label_email),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
             fontSize = 16.sp,
@@ -64,43 +51,59 @@ fun LoginBox(
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 8.dp)
+                .padding(bottom = 24.dp)
                 .background(
                     Color.Transparent
                 ),
+            label = {
+                Text(
+                    text = stringResource(R.string.login_label_email),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.White,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Light
+                )
+            },
             value = teste,
             onValueChange = {
                 teste = it
             },
-            shape = RoundedCornerShape(100),
+            shape = RoundedCornerShape(20),
             placeholder = {
                 Text(
-                    stringResource(R.string.login_placeholder_password)
-                )
-            }
-        )
+                    text = stringResource(R.string.login_placeholder_password),
+                    fontSize = 16.sp
 
-        Text(
-            modifier = Modifier.padding(top = 40.dp),
-            text = stringResource(R.string.login_label_password),
-            style = MaterialTheme.typography.titleMedium,
-            color = Color.White,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Light
+                )
+            },
+            textStyle = TextStyle(Color.White)
         )
 
         OutlinedTextField(
             modifier = Modifier
                 .width(360.dp)
-                .padding(top = 8.dp),
+                .padding(bottom = 12.dp),
             value = teste,
             onValueChange = {
                 teste = it
             },
-            shape = RoundedCornerShape(100),
+            textStyle = TextStyle( fontSize = 16.sp,
+                color = Color.White),
+            singleLine = true,
+            label = {
+                Text(
+                    text = stringResource(R.string.login_label_password),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.White,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Light
+                )
+            },
+            shape = RoundedCornerShape(20),
             placeholder = {
                 Text(
-                    stringResource(R.string.login_placeholder_password)
+                    text = stringResource(R.string.login_placeholder_password),
+                    fontSize = 16.sp
                 )
             }
         )
@@ -118,18 +121,20 @@ fun LoginBox(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(alignment = Alignment.CenterHorizontally)
-                .padding(top = 60.dp, bottom = 20.dp),
+                .padding(bottom = 11.dp),
             onClick = { /*TODO*/ }) {
-
             Text(text = stringResource(R.string.login_button))
         }
 
         ClickableText(
-            modifier = Modifier
-                .align(alignment = Alignment.CenterHorizontally)
-                .padding(bottom = 20.dp),
             text = AnnotatedString(stringResource(R.string.login_link_register)),
-            style = TextStyle(color = Color.White),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
+            style = TextStyle(
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Light,
+                color = Color.White
+            ),
             onClick = {
                 onNavigateToRegister()
             }

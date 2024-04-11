@@ -27,8 +27,7 @@ fun CorporateInsignia(
         modifier = modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(
-           space =  8.dp,
-           alignment =  Alignment.CenterHorizontally
+           space =  5.dp,
         ),
         verticalAlignment = Alignment.CenterVertically
     ) {
