@@ -22,7 +22,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -72,9 +74,8 @@ fun LoginBox(
             placeholder = {
                 Text(
                     text = stringResource(R.string.login_placeholder_password),
-                    fontSize = 16.sp
-
-                )
+                    fontSize = 16.sp,
+                    color = Color.White)
             },
             textStyle = TextStyle(Color.White)
         )
@@ -87,7 +88,8 @@ fun LoginBox(
             onValueChange = {
                 teste = it
             },
-            textStyle = TextStyle( fontSize = 16.sp,
+            textStyle = TextStyle(
+                fontSize = 16.sp,
                 color = Color.White),
             singleLine = true,
             label = {
@@ -110,10 +112,15 @@ fun LoginBox(
 
         ClickableText(
             modifier = Modifier
-                .padding(top = 20.dp)
-                .align(alignment = Alignment.End),
+                .align(alignment = Alignment.End)
+                .padding(bottom = 55.dp),
             text = AnnotatedString(stringResource(R.string.login_link_forgot_password)),
-            style = TextStyle(color = Color.White),
+            style = TextStyle(
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Light,
+                color = Color.White,
+                textDecoration = TextDecoration.Underline
+            ),
             onClick = { /*TODO*/ }
         )
 
@@ -123,7 +130,9 @@ fun LoginBox(
                 .align(alignment = Alignment.CenterHorizontally)
                 .padding(bottom = 11.dp),
             onClick = { /*TODO*/ }) {
-            Text(text = stringResource(R.string.login_button))
+            Text(
+                text = stringResource(R.string.login_button)
+            )
         }
 
         ClickableText(
@@ -131,9 +140,10 @@ fun LoginBox(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
             style = TextStyle(
-                fontSize = 15.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Light,
-                color = Color.White
+                color = Color.White,
+                textDecoration = TextDecoration.Underline
             ),
             onClick = {
                 onNavigateToRegister()
