@@ -12,14 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-<<<<<<< HEAD
 import com.example.codegenius.feature.aluno.login.view.screens.LoginScreen
 import com.example.codegenius.feature.aluno.login.view.screens.RegisterScreen
-=======
 import com.example.codegenius.feature.aluno.course.view.CourseActivity
-import com.example.codegenius.feature.aluno.login.view.ui.screens.LoginScreen
-import com.example.codegenius.feature.aluno.login.view.ui.screens.RegisterScreen
->>>>>>> d566aa17eade79b978d58df05bef94cf2dc8c336
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
 class LoginActivity : ComponentActivity() {
