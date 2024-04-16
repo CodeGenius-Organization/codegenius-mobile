@@ -7,7 +7,7 @@
 
     <group
         android:translateX="28.5"
-        android:translateY="26.5">
+        android:translateY="27.5">
 
         <clip-path android:pathData="M0,0h52.5v53.5h-52.5z"/>
 

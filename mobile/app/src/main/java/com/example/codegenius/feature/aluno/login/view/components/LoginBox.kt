@@ -32,7 +32,8 @@ import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
 
 @Composable
 fun LoginBox(
-    onNavigateToRegister: () -> Unit = {}
+    onNavigateToRegister: () -> Unit = {},
+    onNavigateToCourse: () -> Unit = {}
 ) {
     var teste by remember {
         mutableStateOf("")
@@ -133,7 +134,10 @@ fun LoginBox(
                 .fillMaxWidth()
                 .align(alignment = Alignment.CenterHorizontally)
                 .padding(bottom = 11.dp),
-            onClick = { /*TODO*/ }) {
+            onClick = {
+                /*TODO*/
+                onNavigateToCourse()
+            }) {
             Text(
                 text = stringResource(R.string.login_button)
             )
