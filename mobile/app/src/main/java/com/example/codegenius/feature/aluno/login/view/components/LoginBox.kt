@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.login.view.ui.components
+package com.example.codegenius.feature.aluno.login.view.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -22,19 +22,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
+import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
 
 @Composable
 fun LoginBox(
     onNavigateToRegister: () -> Unit = {}
 ) {
     var teste by remember {
+        mutableStateOf("")
+    }
+    var teste2 by remember {
         mutableStateOf("")
     }
     Column(
@@ -73,25 +76,19 @@ fun LoginBox(
             shape = RoundedCornerShape(20),
             placeholder = {
                 Text(
-                    text = stringResource(R.string.login_placeholder_password),
-                    fontSize = 16.sp,
-                    color = Color.White)
+                    text = stringResource(R.string.login_placeholder_email),
+                    fontSize = 13.sp,
+                    color = PlaceholderGenius,
+                    fontWeight = FontWeight.SemiBold
+                )
             },
-            textStyle = TextStyle(Color.White)
+            textStyle = TextStyle(color = Color.White, fontWeight = FontWeight.Light)
         )
 
         OutlinedTextField(
             modifier = Modifier
                 .width(360.dp)
                 .padding(bottom = 12.dp),
-            value = teste,
-            onValueChange = {
-                teste = it
-            },
-            textStyle = TextStyle(
-                fontSize = 16.sp,
-                color = Color.White),
-            singleLine = true,
             label = {
                 Text(
                     text = stringResource(R.string.login_label_password),
@@ -101,13 +98,20 @@ fun LoginBox(
                     fontWeight = FontWeight.Light
                 )
             },
+            value = teste2,
+            onValueChange = {
+                teste2 = it
+            },
             shape = RoundedCornerShape(20),
             placeholder = {
                 Text(
                     text = stringResource(R.string.login_placeholder_password),
-                    fontSize = 16.sp
+                    fontSize = 13.sp,
+                    color = PlaceholderGenius,
+                    fontWeight = FontWeight.SemiBold
                 )
-            }
+            },
+            textStyle = TextStyle(color = Color.White, fontWeight = FontWeight.Light)
         )
 
         ClickableText(

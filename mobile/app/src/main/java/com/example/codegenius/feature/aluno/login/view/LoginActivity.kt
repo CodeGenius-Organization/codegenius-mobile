@@ -14,8 +14,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.codegenius.feature.aluno.login.view.ui.screens.LoginScreen
-import com.example.codegenius.feature.aluno.login.view.ui.screens.RegisterScreen
+import com.example.codegenius.feature.aluno.login.view.screens.LoginScreen
+import com.example.codegenius.feature.aluno.login.view.screens.RegisterScreen
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
 class LoginActivity : ComponentActivity() {
