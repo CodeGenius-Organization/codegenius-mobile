@@ -21,7 +21,8 @@ import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 
 fun LoginScreen(
     modifier: Modifier = Modifier,
-    onNavigateToRegister: () -> Unit= {}
+    onNavigateToRegister: () -> Unit = {},
+    onNavigateToCourse: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -34,7 +35,7 @@ fun LoginScreen(
         )
     ) {
         CorporateInsignia()
-        LoginBox(onNavigateToRegister = onNavigateToRegister)
+        LoginBox(onNavigateToRegister = onNavigateToRegister, onNavigateToCourse = onNavigateToCourse)
     }
 }
 
