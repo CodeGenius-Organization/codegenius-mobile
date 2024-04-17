@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.login.view.components
+package com.example.codegenius.feature.aluno.login.views.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -28,6 +28,7 @@ fun CorporateInsignia(
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(
            space =  5.dp,
+           alignment = Alignment.CenterHorizontally
         ),
         verticalAlignment = Alignment.CenterVertically
     ) {
