@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.login.view.components
+package com.example.codegenius.feature.aluno.login.views.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
