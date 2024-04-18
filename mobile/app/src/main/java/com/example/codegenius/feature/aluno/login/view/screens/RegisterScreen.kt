@@ -10,14 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-<<<<<<< HEAD:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/view/screens/RegisterScreen.kt
 import com.example.codegenius.feature.aluno.login.view.components.CorporateInsignia
 import com.example.codegenius.feature.aluno.login.view.components.RegisterBox
-=======
-import com.example.codegenius.feature.aluno.login.view.ui.components.CorporateInsignia
-import com.example.codegenius.feature.aluno.login.view.ui.components.RegisterBox
 import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
->>>>>>> d566aa17eade79b978d58df05bef94cf2dc8c336:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/view/ui/screens/RegisterScreen.kt
 
 @Composable
 fun RegisterScreen(
