@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -27,12 +29,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
+import com.example.codegenius.feature.aluno.course.model.CategoryModel
+import com.example.codegenius.feature.aluno.course.model.CourseModel
+import com.example.codegenius.feature.aluno.course.model.LanguagesModel
 import com.example.codegenius.feature.aluno.shared.ui.theme.pinkGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.purpleGenius
+import java.util.UUID
 
 @Composable
 fun CourseContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    courseModel: CourseModel
 ) {
     Surface(
         shape = RoundedCornerShape(8.dp),
@@ -46,7 +53,7 @@ fun CourseContent(
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            pinkGenius , purpleGenius
+                            pinkGenius, purpleGenius
                         )
                     )
                 )
@@ -75,19 +82,23 @@ fun CourseContent(
                 modifier = Modifier.padding(14.dp)
             ) {
                 Text(
-                    text = "Lógica de Programação",
+                    text = courseModel.title,
                     color = Color.White,
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = 14.sp,
                     fontWeight = FontWeight(700),
                 )
-                Text(
-                    text = "Java",
-                    color = Color.White,
-                    style = MaterialTheme.typography.labelMedium,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight(400)
-                )
+                LazyRow {
+                    items(courseModel.languages) { languages ->
+                        Text(
+                            text = languages.language,
+                            color = Color.White,
+                            style = MaterialTheme.typography.labelMedium,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight(400)
+                        )
+                    }
+                }
                 Row {
                     Text(
                         text = stringResource(R.string.course_content_label),
@@ -98,7 +109,7 @@ fun CourseContent(
                     )
                     Text(
                         modifier = Modifier.padding(start = 3.dp),
-                        text = "Helena Pêra",
+                        text = courseModel.teacherName,
                         color = Color.White,
                         style = MaterialTheme.typography.labelMedium,
                         fontSize = 10.sp,
@@ -106,7 +117,7 @@ fun CourseContent(
                     )
                 }
                 Text(
-                    text = "Em andamento",
+                    text = courseModel.status,
                     color = Color.White,
                     style = MaterialTheme.typography.labelMedium,
                     fontSize = 10.sp,
@@ -137,5 +148,27 @@ fun CourseContent(
 @Preview
 @Composable
 fun CourseContentPreview() {
-    CourseContent()
+    CourseContent(
+        courseModel =  CourseModel(
+            id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
+            title = "IA",
+            courseDescription = "Curso muito show de IA",
+            contentDescription = "Só conteudo de qualidade de IA",
+            available = true,
+            languages = listOf(
+                LanguagesModel(
+                    id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
+                    language = "Python"
+                )
+            ),
+            status = "Em andamento",
+            teacherName = "Victor Daniel",
+            categoryModel = listOf(
+                    CategoryModel(
+                        id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
+                        category = "Database"
+                )
+            )
+        )
+    )
 }

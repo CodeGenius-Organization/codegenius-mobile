@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.codegenius.feature.aluno.course.view.CourseActivity
 import com.example.codegenius.feature.aluno.login.views.screens.LoginScreen
 import com.example.codegenius.feature.aluno.login.views.screens.RegisterScreen
-import com.example.codegenius.feature.aluno.course.view.CourseActivity
 import com.example.codegenius.feature.aluno.login.viewmodels.LoginScreenViewModel
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
