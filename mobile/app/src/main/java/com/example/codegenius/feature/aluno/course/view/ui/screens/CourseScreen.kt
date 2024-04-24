@@ -20,7 +20,7 @@ import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 @Composable
 fun CourseScreen(
     modifier: Modifier = Modifier,
-    courseModel: List<CourseModel> = contentCoursesMock, //TODO
+    courseModel: List<CourseModel> = contentCoursesMock //TODO
 ) {
     Column(
         modifier = modifier

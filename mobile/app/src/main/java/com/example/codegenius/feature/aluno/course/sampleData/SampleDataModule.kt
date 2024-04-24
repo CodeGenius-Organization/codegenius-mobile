@@ -18,6 +18,12 @@ val contentModuleMock = listOf(
             ),
             ModuleLessonModel(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
+                lessonTitle = "Considerações finais sobre o java",
+                lessonOrder = 3,
+                contentDescription = "Uma breve consederação sobre o java."
+            ),
+            ModuleLessonModel(
+                id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 lessonTitle = "A importacia da orientação de objeto",
                 lessonOrder = 2,
                 contentDescription = "Uma breve descrição sobre o que é a orientação objeto e seus pontos fortes e fracos."
@@ -47,6 +53,12 @@ val contentModuleMock = listOf(
                 lessonTitle = "Fazendo uma requisição utilizando o http client",
                 lessonOrder = 1,
                 contentDescription = "Conceitos basicos de API e integração."
+            ),
+            ModuleLessonModel(
+                id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
+                lessonTitle = "Considerações finais sobre o spring boot",
+                lessonOrder = 4,
+                contentDescription = "Uma breve consederação sobre o spring boot."
             ),
             ModuleLessonModel(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),

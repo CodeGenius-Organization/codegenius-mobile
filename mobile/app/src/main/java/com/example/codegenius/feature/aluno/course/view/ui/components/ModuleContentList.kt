@@ -14,12 +14,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.feature.aluno.course.model.ModuleModel
+import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 
 @Composable
 fun ModuleContentList(
     title: String,
     modifier: Modifier = Modifier,
-    moduleModel: List<ModuleModel>? = null //TODO
+    moduleModel: ModuleModel //TODO
 ) {
     Column(
         modifier = modifier
@@ -36,15 +37,14 @@ fun ModuleContentList(
             fontWeight = FontWeight(400)
         )
         Column {
-            for (i in 0 until 3) {
-                ModuleContent()
+            val sortedLessons = moduleModel.moduleLessonModel.sortedBy { it.lessonOrder }
+            sortedLessons.forEachIndexed { index, moduleLesson ->
+                ModuleContent(moduleLessonModel = moduleLesson, order = moduleModel.moduleOrder)
 
-                if (i < 2) {  //TODO
+                if (index < moduleModel.moduleLessonModel.size - 1) {
                     HorizontalDivider(
                         modifier = Modifier
-                            .padding(
-                                start = 16.dp, end = 16.dp
-                            )
+                            .padding(horizontal = 16.dp)
                             .fillMaxWidth()
                     )
                 }
@@ -57,6 +57,7 @@ fun ModuleContentList(
 @Composable
 fun ModuleContentListPreview() {
     ModuleContentList(
-        title = "Modulo"
+        title = "Modulo",
+        moduleModel = contentModuleMock.get(0)
     )
 }
