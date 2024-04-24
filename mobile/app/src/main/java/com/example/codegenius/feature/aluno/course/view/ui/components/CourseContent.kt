@@ -2,6 +2,7 @@ package com.example.codegenius.feature.aluno.course.view.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -90,13 +91,28 @@ fun CourseContent(
                 )
                 LazyRow {
                     items(courseModel.languages) { languages ->
-                        Text(
-                            text = languages.language,
-                            color = Color.White,
-                            style = MaterialTheme.typography.labelMedium,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight(400)
-                        )
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(3.dp)
+                        ){
+                            Text(
+                                text = languages.language,
+                                color = Color.White,
+                                style = MaterialTheme.typography.labelMedium,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight(400)
+                            )
+
+                            if (courseModel.languages.indexOf(languages) < courseModel.languages.size - 1) {
+                                Text(
+                                    text = "•",
+                                    modifier = Modifier.padding(end = 3.dp),
+                                    color = Color.White,
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight(400),
+                                )
+                            }
+                        }
                     }
                 }
                 Row {
