@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
+import com.example.codegenius.feature.aluno.course.view.ui.screens.ModuleScreen
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
 
@@ -24,6 +25,9 @@ class CourseActivity : ComponentActivity()  {
                 NavHost(navController = navController, startDestination = AppDestination.Course.route) {
                     composable(AppDestination.Course.route) {
                         CourseScreen()
+                    }
+                    composable(AppDestination.Module.route) {
+                        ModuleScreen()
                     }
                 }
             }
