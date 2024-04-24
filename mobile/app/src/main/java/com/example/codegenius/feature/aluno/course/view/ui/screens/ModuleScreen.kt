@@ -27,7 +27,6 @@ fun ModuleScreen(
             .fillMaxSize()
             .background(Color(red = 12, green = 15, blue = 26))
     ) {
-        val sortedModules = moduleModel.sortedBy { it.moduleOrder }
         Navigationbar()
         LazyColumn(
             Modifier.fillMaxSize(),
