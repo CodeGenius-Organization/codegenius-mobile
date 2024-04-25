@@ -6,5 +6,6 @@ data class ModuleLessonModel (
     val id: UUID,
     val lessonTitle: String,
     val lessonOrder: Int,
-    val contentDescription: String
+    val contentDescription: String,
+    val lessonContentModel: LessonContentModel
 )
