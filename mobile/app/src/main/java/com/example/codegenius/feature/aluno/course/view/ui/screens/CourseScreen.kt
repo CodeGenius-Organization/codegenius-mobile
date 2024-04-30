@@ -11,11 +11,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.codegenius.feature.aluno.course.data.categories
 import com.example.codegenius.feature.aluno.course.model.CourseModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.CourseContentList
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
+
+val categories = listOf(
+    "Backend",
+    "Database",
+    "Frontend",
+    "Mobile",
+    "Security"
+)
 
 @Composable
 fun CourseScreen(
