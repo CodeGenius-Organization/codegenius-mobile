@@ -11,15 +11,4 @@ data class LoginScreenUiState (
     val onEmailChange: (String) -> Unit = {},
     val onPasswordChange: (String) -> Unit = {},
     var visibility: Boolean = false,
-) {
-    val visibilityChange: () -> Unit = {
-        visibility = !visibility
-    }
-    val eyeState: () -> ImageVector =  {
-        if(visibility){
-            Icons.Outlined.Visibility
-        } else{
-            Icons.Outlined.VisibilityOff
-        }
-    }
-}
+)

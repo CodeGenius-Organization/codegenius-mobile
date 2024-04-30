@@ -15,6 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -35,6 +37,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,6 +59,7 @@ fun LoginScreen(
     val state by viewModel.uiState.collectAsState()
     LoginScreen(
         state = state,
+        visibilityChange = { viewModel.visibilityChange() },
         onNavigateToRegister = onNavigateToRegister,
         onNavigateToCourse = onNavigateToCourse
     )
@@ -63,11 +68,14 @@ fun LoginScreen(
 @Composable
 fun LoginScreen(
     state: LoginScreenUiState = LoginScreenUiState(),
+    visibilityChange: () -> Unit,
     onNavigateToRegister: () -> Unit = {},
     onNavigateToCourse: () -> Unit = {}
 ) {
     val email = state.email
     val password = state.password
+    val visibility = state.visibility
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -100,6 +108,7 @@ fun LoginScreen(
                     .background(
                         Color.Transparent
                     ),
+                maxLines = 1,
                 label = {
                     Text(
                         text = stringResource(R.string.login_label_email),
@@ -144,15 +153,26 @@ fun LoginScreen(
                         fontWeight = FontWeight.Light
                     )
                 },
+                maxLines = 1,
+                visualTransformation = if (visibility) {
+                    VisualTransformation.None
+                } else {
+                    PasswordVisualTransformation()
+                },
                 trailingIcon = {
-                        IconButton(
-                            onClick =  state.visibilityChange
-                        ) {
-                            Icon(
-                                imageVector = state.eyeState(),
-                                contentDescription = null,
-                                tint = Color.White)
-                        }
+                    IconButton(
+                        onClick = visibilityChange
+                    ) {
+                        Icon(
+                            imageVector = if (visibility) {
+                                Icons.Outlined.VisibilityOff
+                            } else {
+                                Icons.Outlined.Visibility
+                            },
+                            contentDescription = null,
+                            tint = Color.White
+                        )
+                    }
                 },
                 value = password,
                 onValueChange = state.onPasswordChange,
@@ -194,7 +214,8 @@ fun LoginScreen(
                 onClick = {
                     onNavigateToCourse()
                 },
-                shape = RoundedCornerShape(20)) {
+                shape = RoundedCornerShape(20)
+            ) {
                 Text(
                     text = stringResource(R.string.login_button)
                 )
@@ -216,10 +237,4 @@ fun LoginScreen(
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen()
 }

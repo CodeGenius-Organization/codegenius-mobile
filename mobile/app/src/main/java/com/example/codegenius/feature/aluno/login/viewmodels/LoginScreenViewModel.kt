@@ -1,5 +1,9 @@
 package com.example.codegenius.feature.aluno.login.viewmodels
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.ViewModel
 import com.example.codegenius.feature.aluno.login.views.states.LoginScreenUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +28,16 @@ class LoginScreenViewModel : ViewModel() {
                     _uiState.value = _uiState.value.copy(
                         password = it,
                     )
-                }
+                },
+            )
+        }
+    }
+
+
+    fun visibilityChange(){
+        _uiState.update {currentState ->
+            currentState.copy(
+                visibility = !currentState.visibility
             )
         }
     }
