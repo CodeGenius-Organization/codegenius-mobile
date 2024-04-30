@@ -1,17 +1,23 @@
 package com.example.codegenius.feature.aluno.login.views.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -21,10 +27,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,6 +45,7 @@ import com.example.codegenius.feature.aluno.login.views.components.CorporateInsi
 import com.example.codegenius.feature.aluno.login.views.states.LoginScreenUiState
 import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
+
 @Composable
 fun LoginScreen(
     viewModel: LoginScreenViewModel,
@@ -60,7 +71,6 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
             .background(BackgroundGenius)
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(
@@ -72,6 +82,7 @@ fun LoginScreen(
         Column(
             modifier = Modifier
                 .padding(horizontal = 30.dp)
+                .verticalScroll(rememberScrollState())
         ) {
             Text(
                 modifier = Modifier.padding(bottom = 32.dp),
@@ -109,7 +120,12 @@ fun LoginScreen(
                         fontWeight = FontWeight.SemiBold
                     )
                 },
-                textStyle = TextStyle(color = Color.White, fontWeight = FontWeight.Light)
+                textStyle = TextStyle(color = Color.White, fontWeight = FontWeight.Bold),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next,
+                    capitalization = KeyboardCapitalization.Sentences
+                )
             )
 
             OutlinedTextField(
@@ -128,6 +144,16 @@ fun LoginScreen(
                         fontWeight = FontWeight.Light
                     )
                 },
+                trailingIcon = {
+                        IconButton(
+                            onClick =  state.visibilityChange
+                        ) {
+                            Icon(
+                                imageVector = state.eyeState(),
+                                contentDescription = null,
+                                tint = Color.White)
+                        }
+                },
                 value = password,
                 onValueChange = state.onPasswordChange,
                 shape = RoundedCornerShape(20),
@@ -139,7 +165,11 @@ fun LoginScreen(
                         fontWeight = FontWeight.SemiBold
                     )
                 },
-                textStyle = TextStyle(color = Color.White, fontWeight = FontWeight.Light)
+                textStyle = TextStyle(color = Color.White, fontWeight = FontWeight.Bold),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    capitalization = KeyboardCapitalization.Sentences
+                )
             )
 
             ClickableText(
