@@ -1,19 +1,19 @@
-package com.example.codegenius.feature.aluno.login.views.screens
+package com.example.codegenius.feature.aluno.login.ui.screens
 
-import androidx.compose.foundation.Image
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Button
@@ -25,11 +25,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
@@ -40,13 +39,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.login.viewmodels.LoginScreenViewModel
-import com.example.codegenius.feature.aluno.login.views.components.CorporateInsignia
-import com.example.codegenius.feature.aluno.login.views.states.LoginScreenUiState
+import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
+import com.example.codegenius.feature.aluno.login.ui.components.CorporateInsignia
+import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenState
+import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenUiState
 import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
 
@@ -56,25 +55,36 @@ fun LoginScreen(
     onNavigateToRegister: () -> Unit = {},
     onNavigateToCourse: () -> Unit = {}
 ) {
-    val state by viewModel.uiState.collectAsState()
+    val state by viewModel.state.observeAsState()
+    val uiState by viewModel.uiState.collectAsState()
+
     LoginScreen(
-        state = state,
+        uiState = uiState,
+        state = state!!,
         visibilityChange = { viewModel.visibilityChange() },
         onNavigateToRegister = onNavigateToRegister,
-        onNavigateToCourse = onNavigateToCourse
+        onNavigateToCourse = onNavigateToCourse,
+        onLogin = { viewModel.postLogin() }
     )
 }
 
 @Composable
 fun LoginScreen(
-    state: LoginScreenUiState = LoginScreenUiState(),
+    uiState: LoginScreenUiState = LoginScreenUiState(),
+    state: LoginScreenState = LoginScreenState.Loading,
     visibilityChange: () -> Unit,
     onNavigateToRegister: () -> Unit = {},
-    onNavigateToCourse: () -> Unit = {}
+    onNavigateToCourse: () -> Unit = {},
+    onLogin: () -> Unit
 ) {
-    val email = state.email
-    val password = state.password
-    val visibility = state.visibility
+    val email = uiState.email
+    val password = uiState.password
+    val visibility = uiState.visibility
+
+    if(state is LoginScreenState.Success){
+        onNavigateToCourse()
+        Log.d("##API Sus", "Deu certo")
+    }
 
     Column(
         modifier = Modifier
@@ -119,7 +129,7 @@ fun LoginScreen(
                     )
                 },
                 value = email,
-                onValueChange = state.onEmailChange,
+                onValueChange = uiState.onEmailChange,
                 shape = RoundedCornerShape(20),
                 placeholder = {
                     Text(
@@ -175,7 +185,7 @@ fun LoginScreen(
                     }
                 },
                 value = password,
-                onValueChange = state.onPasswordChange,
+                onValueChange = uiState.onPasswordChange,
                 shape = RoundedCornerShape(20),
                 placeholder = {
                     Text(
@@ -212,7 +222,7 @@ fun LoginScreen(
                     .align(alignment = Alignment.CenterHorizontally)
                     .padding(bottom = 11.dp),
                 onClick = {
-                    onNavigateToCourse()
+                    onLogin()
                 },
                 shape = RoundedCornerShape(20)
             ) {
