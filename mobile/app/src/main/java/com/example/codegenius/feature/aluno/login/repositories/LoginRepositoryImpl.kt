@@ -1,8 +1,7 @@
-package com.example.codegenius.feature.aluno.login
+package com.example.codegenius.feature.aluno.login.repositories
 
 import com.example.codegenius.feature.aluno.login.models.Login
 import com.example.codegenius.feature.aluno.login.models.Token
-import com.example.codegenius.feature.aluno.login.repositories.ILoginRepository
 import com.example.codegenius.feature.aluno.network.ApiConfig
 import com.example.codegenius.feature.aluno.network.services.LoginService
 import retrofit2.Response

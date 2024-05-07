@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,6 +16,7 @@ import com.example.codegenius.feature.aluno.course.view.CourseActivity
 import com.example.codegenius.feature.aluno.login.ui.screens.LoginScreen
 import com.example.codegenius.feature.aluno.login.ui.screens.RegisterScreen
 import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
+import com.example.codegenius.feature.aluno.login.ui.viewmodels.RegisterScreenViewModel
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 import com.example.codegenius.feature.aluno.network.appModule
 import org.koin.android.ext.android.inject
@@ -28,7 +28,8 @@ class LoginActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            val viewModel by inject<LoginScreenViewModel>()
+            val registerVm by inject<RegisterScreenViewModel>()
+            val loginVm by inject<LoginScreenViewModel>()
             App {
                 NavHost(
                     navController = navController,
@@ -36,7 +37,7 @@ class LoginActivity : ComponentActivity() {
                 ) {
                     composable(AppDestination.Login.route) {
                         LoginScreen(
-                            viewModel = viewModel,
+                            viewModel = loginVm,
                             onNavigateToRegister = {
                                 navController.navigate(AppDestination.Register.route)
                             }, onNavigateToCourse = {
@@ -49,7 +50,9 @@ class LoginActivity : ComponentActivity() {
                             })
                     }
                     composable(AppDestination.Register.route) {
-                        RegisterScreen(onNavigateToLogin = {
+                        RegisterScreen(
+                            viewModel= registerVm,
+                            onNavigateToLogin = {
                             navController.navigate(AppDestination.Login.route)
                         }
                         )

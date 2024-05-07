@@ -83,7 +83,7 @@ fun LoginScreen(
 
     if(state is LoginScreenState.Success){
         onNavigateToCourse()
-        Log.d("##API Sus", "Deu certo")
+        Log.d("###API", "Logado com Sucesso")
     }
 
     Column(
@@ -99,6 +99,7 @@ fun LoginScreen(
         CorporateInsignia()
         Column(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(horizontal = 30.dp)
                 .verticalScroll(rememberScrollState())
         ) {
@@ -125,7 +126,7 @@ fun LoginScreen(
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.White,
                         fontSize = 13.sp,
-                        fontWeight = FontWeight.Light
+                        fontWeight = FontWeight.Normal
                     )
                 },
                 value = email,
@@ -160,7 +161,7 @@ fun LoginScreen(
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.White,
                         fontSize = 13.sp,
-                        fontWeight = FontWeight.Light
+                        fontWeight = FontWeight.Normal
                     )
                 },
                 maxLines = 1,
@@ -209,7 +210,7 @@ fun LoginScreen(
                 text = AnnotatedString(stringResource(R.string.login_link_forgot_password)),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     color = Color.White,
                     textDecoration = TextDecoration.Underline
                 ),
@@ -237,7 +238,7 @@ fun LoginScreen(
                     .align(Alignment.CenterHorizontally),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     color = Color.White,
                     textDecoration = TextDecoration.Underline
                 ),

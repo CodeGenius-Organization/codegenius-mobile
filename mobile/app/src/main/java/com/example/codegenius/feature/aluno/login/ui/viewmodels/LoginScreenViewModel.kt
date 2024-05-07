@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.login.ui.viewmodels
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -50,7 +51,8 @@ class LoginScreenViewModel(
                 if (response.isSuccessful) {
                     response.body()?.let { token ->
                         state.value = LoginScreenState.Success(data = token)
-                    } ?: throw Exception("O corpo da resposta está nulo")
+                    }
+                        ?: throw Exception("O corpo da resposta está nulo")
                 } else {
                     throw Exception("Erro desconhecido")
                 }
