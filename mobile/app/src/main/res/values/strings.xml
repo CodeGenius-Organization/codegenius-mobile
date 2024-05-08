@@ -5,6 +5,9 @@
     <!-- Conteudo do curso -->
     <string name="course_content_label">Feito por:</string>
 
+    <!-- Conteudo do Modulo -->
+    <string name="modulo_description_label">O que aprenderá:</string>
+
     <!-- Box do login -->
     <string name="login_label_welcome">Olá novamente!</string>
     <string name="login_label_email">E-mail:</string>

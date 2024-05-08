@@ -20,7 +20,7 @@ import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 @Composable
 fun ModuleScreen(
     modifier: Modifier = Modifier,
-    moduleModel: List<ModuleModel> = contentModuleMock //TODO
+    moduleModel: List<ModuleModel>
 ){
     Column(
         modifier = modifier
@@ -43,7 +43,7 @@ fun ModuleScreen(
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview()
 @Composable
 fun ModuleScreenPreview() {
     ModuleScreen(moduleModel = contentModuleMock)

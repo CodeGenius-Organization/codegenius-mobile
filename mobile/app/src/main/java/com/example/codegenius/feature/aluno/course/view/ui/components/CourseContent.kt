@@ -33,6 +33,7 @@ import com.example.codegenius.R
 import com.example.codegenius.feature.aluno.course.model.CategoryModel
 import com.example.codegenius.feature.aluno.course.model.CourseModel
 import com.example.codegenius.feature.aluno.course.model.LanguagesModel
+import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.shared.ui.theme.pinkGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.purpleGenius
 import java.util.UUID
@@ -165,26 +166,6 @@ fun CourseContent(
 @Composable
 fun CourseContentPreview() {
     CourseContent(
-        courseModel =  CourseModel(
-            id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
-            title = "IA",
-            courseDescription = "Curso muito show de IA",
-            contentDescription = "Só conteudo de qualidade de IA",
-            available = true,
-            languages = listOf(
-                LanguagesModel(
-                    id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
-                    language = "Python"
-                )
-            ),
-            status = "Em andamento",
-            teacherName = "Victor Daniel",
-            categoryModel = listOf(
-                    CategoryModel(
-                        id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
-                        category = "Database"
-                )
-            )
-        )
+        courseModel =  contentCoursesMock.get(0)
     )
 }
