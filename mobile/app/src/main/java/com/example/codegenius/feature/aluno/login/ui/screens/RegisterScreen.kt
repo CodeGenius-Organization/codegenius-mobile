@@ -54,14 +54,11 @@ import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
 fun RegisterScreen(
     viewModel: RegisterScreenViewModel,
     onNavigateToLogin: () -> Unit = {},
-
     ) {
-    val state by viewModel.state.observeAsState()
     val uiState by viewModel.uiState.collectAsState()
 
     RegisterScreen(
         uiState = uiState,
-        state = state!!,
         visibilityChange = {
             viewModel.visibilityChange()
         },
@@ -69,24 +66,18 @@ fun RegisterScreen(
             viewModel.visibilityConfirmPassChange()
         },
         onNavigateToLogin = onNavigateToLogin,
-        onRegister = { viewModel.postRegister() }
+        onRegister = { viewModel.postRegister(onNavigateToLogin) }
     )
 }
 
 @Composable
 fun RegisterScreen(
     uiState: RegisterScreenUiState = RegisterScreenUiState(),
-    state: RegisterScreenState = RegisterScreenState.Loading,
     visibilityChange: () -> Unit,
     visiConfirmPassChange: () -> Unit,
     onRegister: () -> Unit,
     onNavigateToLogin: () -> Unit = {}
 ) {
-
-    if (state is RegisterScreenState.Success) {
-        onNavigateToLogin()
-        Log.d("###API", "Cadastrado com Sucesso")
-    }
 
     Column(
         modifier = Modifier

@@ -55,36 +55,27 @@ fun LoginScreen(
     onNavigateToRegister: () -> Unit = {},
     onNavigateToCourse: () -> Unit = {}
 ) {
-    val state by viewModel.state.observeAsState()
+
     val uiState by viewModel.uiState.collectAsState()
 
     LoginScreen(
         uiState = uiState,
-        state = state!!,
         visibilityChange = { viewModel.visibilityChange() },
         onNavigateToRegister = onNavigateToRegister,
-        onNavigateToCourse = onNavigateToCourse,
-        onLogin = { viewModel.postLogin() }
+        onLogin = { viewModel.postLogin(onNavigateToCourse) }
     )
 }
 
 @Composable
 fun LoginScreen(
     uiState: LoginScreenUiState = LoginScreenUiState(),
-    state: LoginScreenState = LoginScreenState.Loading,
     visibilityChange: () -> Unit,
     onNavigateToRegister: () -> Unit = {},
-    onNavigateToCourse: () -> Unit = {},
     onLogin: () -> Unit
 ) {
     val email = uiState.email
     val password = uiState.password
     val visibility = uiState.visibility
-
-    if(state is LoginScreenState.Success){
-        onNavigateToCourse()
-        Log.d("###API", "Logado com Sucesso")
-    }
 
     Column(
         modifier = Modifier

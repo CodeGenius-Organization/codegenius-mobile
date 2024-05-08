@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.login.ui.viewmodels
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -42,7 +43,7 @@ class LoginScreenViewModel(
         }
     }
 
-    fun postLogin() {
+    fun postLogin(onNavigateCourse: () -> Unit) {
         val login = Login(_uiState.value.email, _uiState.value.password)
         viewModelScope.launch {
             try {
@@ -51,6 +52,8 @@ class LoginScreenViewModel(
                 if (response.isSuccessful) {
                     response.body()?.let { token ->
                         state.value = LoginScreenState.Success(data = token)
+                        Log.d("###Token", "${token}")
+                        onNavigateCourse()
                     }
                         ?: throw Exception("O corpo da resposta está nulo")
                 } else {

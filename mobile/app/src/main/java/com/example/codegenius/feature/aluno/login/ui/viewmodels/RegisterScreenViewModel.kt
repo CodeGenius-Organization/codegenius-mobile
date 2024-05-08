@@ -72,7 +72,7 @@ class RegisterScreenViewModel(
         }
     }
 
-    fun postRegister() {
+    fun postRegister(onNavigateRegister: () -> Unit) {
         val register = Register(
             nome = (_uiState.value.name+" "+_uiState.value.lastName),
             email = _uiState.value.email,
@@ -87,6 +87,7 @@ class RegisterScreenViewModel(
                 if (response.isSuccessful) {
                     state.value = RegisterScreenState.Success(data = response)
                     Log.d("###API", "Cadastrado com sucesso")
+                    onNavigateRegister()
                 } else {
                     throw Exception("Erro desconhecido")
                 }
