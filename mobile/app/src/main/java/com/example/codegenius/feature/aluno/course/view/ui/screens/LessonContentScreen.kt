@@ -8,7 +8,7 @@ fun LessonContentScreen() {
 
 }
 
-@Preview(showSystemUi = true)
+@Preview()
 @Composable
 fun LessonContentScreenPreview() {
     LessonContentScreen()

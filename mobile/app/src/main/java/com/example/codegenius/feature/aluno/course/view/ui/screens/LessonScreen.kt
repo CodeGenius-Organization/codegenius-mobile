@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.course.view.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,61 +28,71 @@ import com.example.codegenius.feature.aluno.course.model.ModuleModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleContentList
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDescription
+import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonScreen(
     modifier: Modifier = Modifier,
     lessonContent: List<ModuleModel>
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(red = 12, green = 15, blue = 26))
+    ModalNavigationDrawer(
+        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock) }
     ) {
-        Navigationbar()
-        Text(
-            text = stringResource(R.string.modulo_description_label),
-            modifier = Modifier
-                .padding(
-                    start = 16.dp, end = 16.dp, bottom = 30.dp
-                )
-                .fillMaxWidth(),
-            color = Color.White,
-            fontSize = 20.sp,
-            fontWeight = FontWeight(400)
-        )
-        LazyColumn(
-            modifier = Modifier
-                .padding(
-                    top = 8.dp,
-                )
-                .fillMaxWidth()
+        Scaffold(
+            topBar = { Navigationbar() }
         ) {
-            items(lessonContent.sortedBy { it.moduleOrder }) { moduleModel ->
+            Column(
+                modifier = modifier
+                    .fillMaxSize()
+                    .background(Color(red = 12, green = 15, blue = 26))
+                    .padding(top = 100.dp)
+            ) {
                 Text(
-                    text = moduleModel.name + ":",
+                    text = stringResource(R.string.modulo_description_label),
                     modifier = Modifier
                         .padding(
-                            start = 16.dp, end = 16.dp
+                            start = 16.dp, end = 16.dp, bottom = 30.dp
                         )
                         .fillMaxWidth(),
                     color = Color.White,
-                    fontSize = 23.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight(400)
                 )
-                val sortedLessons = moduleModel.moduleLessonModel.sortedBy { it.lessonOrder }
-                sortedLessons.forEachIndexed { index, moduleLesson ->
-                    ModuleDescription(
-                        lessonContentModel = moduleLesson.lessonContentModel
-                    )
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(
+                            top = 8.dp,
+                        )
+                        .fillMaxWidth()
+                ) {
+                    items(lessonContent.sortedBy { it.moduleOrder }) { moduleModel ->
+                        Text(
+                            text = moduleModel.name + ":",
+                            modifier = Modifier
+                                .padding(
+                                    start = 16.dp, end = 16.dp
+                                )
+                                .fillMaxWidth(),
+                            color = Color.White,
+                            fontSize = 23.sp,
+                            fontWeight = FontWeight(400)
+                        )
+                        val sortedLessons = moduleModel.moduleLessonModel.sortedBy { it.lessonOrder }
+                        sortedLessons.forEachIndexed { index, moduleLesson ->
+                            ModuleDescription(
+                                lessonContentModel = moduleLesson.lessonContentModel
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview()
 @Composable
 fun LessonScreenPreview() {
     LessonScreen(

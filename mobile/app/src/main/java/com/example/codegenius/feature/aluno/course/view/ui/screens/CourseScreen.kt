@@ -1,11 +1,14 @@
 package com.example.codegenius.feature.aluno.course.view.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,30 +27,35 @@ val categories = listOf(
     "Security"
 )
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun CourseScreen(
     modifier: Modifier = Modifier,
-    courseModel: List<CourseModel> = contentCoursesMock //TODO
+    courseModel: List<CourseModel>
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(red = 12, green = 15, blue = 26))
+    Scaffold(
+        topBar = { Navigationbar() }
     ) {
-        Navigationbar()
-        LazyColumn(
-            Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(bottom = 16.dp)
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .background(Color(red = 12, green = 15, blue = 26))
+                .padding(top = 100.dp)
         ) {
-        categories.forEach { category ->
-            val coursesInCategory = getCoursesForCategory(category, courseModel)
-            if (coursesInCategory.isNotEmpty()) {
-                    item {
-                        CourseContentList(
-                            title= category,
-                            courseModel = coursesInCategory
-                        )
+            LazyColumn(
+                Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(bottom = 16.dp)
+            ) {
+                categories.forEach { category ->
+                    val coursesInCategory = getCoursesForCategory(category, courseModel)
+                    if (coursesInCategory.isNotEmpty()) {
+                        item {
+                            CourseContentList(
+                                title= category,
+                                courseModel = coursesInCategory
+                            )
+                        }
                     }
                 }
             }
@@ -61,7 +69,7 @@ fun getCoursesForCategory(categoryName: String, courseModel: List<CourseModel>):
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview()
 @Composable
 fun CourseScreenPreview() {
     CourseScreen(courseModel = contentCoursesMock)
