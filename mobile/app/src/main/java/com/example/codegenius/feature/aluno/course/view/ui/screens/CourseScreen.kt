@@ -31,7 +31,8 @@ val categories = listOf(
 @Composable
 fun CourseScreen(
     modifier: Modifier = Modifier,
-    courseModel: List<CourseModel>
+    courseModel: List<CourseModel>,
+    onNavigateToLesson : () -> Unit = {}
 ) {
     Scaffold(
         topBar = { Navigationbar() }
@@ -53,7 +54,8 @@ fun CourseScreen(
                         item {
                             CourseContentList(
                                 title= category,
-                                courseModel = coursesInCategory
+                                courseModel = coursesInCategory,
+                                onNavigateToLesson = onNavigateToLesson
                             )
                         }
                     }

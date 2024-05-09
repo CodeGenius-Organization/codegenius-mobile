@@ -27,7 +27,10 @@ class CourseActivity : ComponentActivity()  {
                 NavHost(navController = navController, startDestination = AppDestination.Course.route) {
                     composable(AppDestination.Course.route) {
                         CourseScreen(
-                            courseModel = contentCoursesMock
+                            courseModel = contentCoursesMock,
+                            onNavigateToLesson = {
+                                navController.navigate(AppDestination.Lesson.route)
+                            }
                         )
                     }
                     composable(AppDestination.Lesson.route) {

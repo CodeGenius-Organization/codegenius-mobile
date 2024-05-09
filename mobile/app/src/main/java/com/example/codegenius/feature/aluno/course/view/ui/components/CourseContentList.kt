@@ -24,7 +24,8 @@ import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 fun CourseContentList(
     title: String,
     modifier: Modifier = Modifier,
-    courseModel: List<CourseModel>
+    courseModel: List<CourseModel>,
+    onNavigateToLesson : () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -59,7 +60,7 @@ fun CourseContentList(
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(courseModel) { course ->
-                CourseContent(courseModel = course)
+                CourseContent(courseModel = course, onNavigateToLesson = onNavigateToLesson)
             }
         }
     }

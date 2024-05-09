@@ -41,12 +41,14 @@ import java.util.UUID
 @Composable
 fun CourseContent(
     modifier: Modifier = Modifier,
-    courseModel: CourseModel
+    courseModel: CourseModel,
+    onNavigateToLesson : () -> Unit = {}
 ) {
     Surface(
         shape = RoundedCornerShape(8.dp),
         shadowElevation = 4.dp,
-        modifier = modifier
+        modifier = modifier,
+        onClick = { onNavigateToLesson() }
     ) {
         Column(
             modifier = Modifier
@@ -58,7 +60,7 @@ fun CourseContent(
                             pinkGenius, purpleGenius
                         )
                     )
-                )
+                ),
         ) {
             Box(
                 modifier = Modifier
