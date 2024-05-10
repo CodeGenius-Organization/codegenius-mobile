@@ -5,8 +5,16 @@
     <!-- Conteudo do curso -->
     <string name="course_content_label">Feito por:</string>
 
-    <!-- Conteudo do Modulo -->
+    <!-- Conteudo do modulo -->
     <string name="modulo_description_label">O que aprenderá:</string>
+
+    <!-- Conteudo do curso -->
+    <string name="course_description_label">Contexto:</string>
+
+    <!-- Menu do curso -->
+    <string name="course_navigationbar_content">Conteúdo</string>
+    <string name="course_navigationbar_exercise">Exercícios</string>
+    <string name="course_navigationbar_test">Prova</string>
 
     <!-- Box do login -->
     <string name="login_label_welcome">Olá novamente!</string>

@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
+import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonContentScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonScreen
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
@@ -35,7 +36,18 @@ class CourseActivity : ComponentActivity()  {
                     }
                     composable(AppDestination.Lesson.route) {
                         LessonScreen(
-                            lessonContent = contentModuleMock
+                            lessonContent = contentModuleMock,
+                            onNavigationLessonContent = {
+                                navController.navigate(AppDestination.LessonContent.route)
+                            }
+                        )
+                    }
+                    composable(AppDestination.LessonContent.route) {
+                        LessonContentScreen(
+                            moduleLessonModel = contentModuleMock.get(0).moduleLessonModel.get(0),
+                            onNavigationLessonContent = {
+                                navController.navigate(AppDestination.LessonContent.route)
+                            }
                         )
                     }
                 }

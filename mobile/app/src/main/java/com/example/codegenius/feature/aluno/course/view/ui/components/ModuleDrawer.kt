@@ -19,7 +19,8 @@ import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 @Composable
 fun ModuleDrawer(
     modifier: Modifier = Modifier,
-    moduleModel: List<ModuleModel>
+    moduleModel: List<ModuleModel>,
+    onNavigationLessonContent : () -> Unit = {}
 ) {
     ModalDrawerSheet (
         modifier = modifier
@@ -32,7 +33,8 @@ fun ModuleDrawer(
             items(moduleModel.sortedBy { it.moduleOrder }) { module ->
                 ModuleContentList(
                     title = module.name,
-                    moduleModel = module
+                    moduleModel = module,
+                    onNavigationLessonContent = onNavigationLessonContent
                 )
             }
         }

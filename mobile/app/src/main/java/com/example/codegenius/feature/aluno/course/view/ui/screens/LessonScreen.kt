@@ -35,10 +35,11 @@ import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 @Composable
 fun LessonScreen(
     modifier: Modifier = Modifier,
-    lessonContent: List<ModuleModel>
+    lessonContent: List<ModuleModel>,
+    onNavigationLessonContent : () -> Unit = {}
 ) {
     ModalNavigationDrawer(
-        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock) }
+        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
     ) {
         Scaffold(
             topBar = { Navigationbar() }
@@ -49,17 +50,6 @@ fun LessonScreen(
                     .background(Color(red = 12, green = 15, blue = 26))
                     .padding(top = 100.dp)
             ) {
-                Text(
-                    text = stringResource(R.string.modulo_description_label),
-                    modifier = Modifier
-                        .padding(
-                            start = 16.dp, end = 16.dp, bottom = 30.dp
-                        )
-                        .fillMaxWidth(),
-                    color = Color.White,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight(400)
-                )
                 LazyColumn(
                     modifier = Modifier
                         .padding(
@@ -67,6 +57,19 @@ fun LessonScreen(
                         )
                         .fillMaxWidth()
                 ) {
+                    item {
+                        Text(
+                            text = stringResource(R.string.modulo_description_label),
+                            modifier = Modifier
+                                .padding(
+                                    start = 16.dp, end = 16.dp, bottom = 30.dp
+                                )
+                                .fillMaxWidth(),
+                            color = Color.White,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight(400)
+                        )
+                    }
                     items(lessonContent.sortedBy { it.moduleOrder }) { moduleModel ->
                         Text(
                             text = moduleModel.name + ":",

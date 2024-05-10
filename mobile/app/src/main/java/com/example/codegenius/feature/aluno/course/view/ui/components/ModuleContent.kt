@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.course.view.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,17 +25,23 @@ import java.util.UUID
 fun ModuleContent(
     modifier: Modifier = Modifier,
     order: Int,
-    moduleLessonModel: ModuleLessonModel //TODO
+    moduleLessonModel: ModuleLessonModel,
+    onNavigationLessonContent : () -> Unit = {}
 ) {
-    Column(
-        modifier = modifier
-            .padding(vertical = 16.dp)
-            .padding(
-                start = 16.dp, end = 16.dp
-            )
-            .fillMaxWidth()
+    Surface(
+        onClick = {  onNavigationLessonContent() }
     ) {
-        LessonContent(lesson = moduleLessonModel, order = order)
+        Column(
+            modifier = modifier
+                .background(Color(red = 12, green = 15, blue = 26))
+                .padding(vertical = 16.dp)
+                .padding(
+                    start = 16.dp, end = 16.dp
+                )
+                .fillMaxWidth()
+        ) {
+            LessonContent(lesson = moduleLessonModel, order = order)
+        }
     }
 }
 

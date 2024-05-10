@@ -19,7 +19,8 @@ import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 fun ModuleContentList(
     title: String,
     modifier: Modifier = Modifier,
-    moduleModel: ModuleModel //TODO
+    moduleModel: ModuleModel,
+    onNavigationLessonContent : () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -38,7 +39,7 @@ fun ModuleContentList(
         Column {
             val sortedLessons = moduleModel.moduleLessonModel.sortedBy { it.lessonOrder }
             sortedLessons.forEachIndexed { index, moduleLesson ->
-                ModuleContent(moduleLessonModel = moduleLesson, order = moduleModel.moduleOrder)
+                ModuleContent(moduleLessonModel = moduleLesson, order = moduleModel.moduleOrder, onNavigationLessonContent = onNavigationLessonContent)
 
                 if (index < moduleModel.moduleLessonModel.size - 1) {
                     HorizontalDivider(
