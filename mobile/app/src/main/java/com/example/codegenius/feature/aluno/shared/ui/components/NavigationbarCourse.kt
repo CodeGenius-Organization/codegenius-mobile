@@ -29,7 +29,10 @@ fun NavigationbarCourse(
     modifier: Modifier = Modifier,
     content : Boolean = false,
     exercise : Boolean = false,
-    test: Boolean = false
+    test: Boolean = false,
+    onNagivationLessonContent : () ->  Unit = {},
+    onNavigationLessonExercise : () -> Unit = {},
+    onNavigationLessonTest: () -> Unit = {}
 ) {
     Row(
         modifier = modifier
@@ -39,7 +42,7 @@ fun NavigationbarCourse(
     ) {
         IconButton(
             modifier = Modifier.width(150.dp),
-            onClick = { /*TODO*/ }
+            onClick = { onNagivationLessonContent() }
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -70,7 +73,7 @@ fun NavigationbarCourse(
         }
         IconButton(
             modifier = Modifier.width(150.dp),
-            onClick = { /*TODO*/ }
+            onClick = { onNavigationLessonExercise() }
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -101,7 +104,7 @@ fun NavigationbarCourse(
         }
         IconButton(
             modifier = Modifier.width(150.dp),
-            onClick = { /*TODO*/ }
+            onClick = { onNavigationLessonTest() }
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth(),

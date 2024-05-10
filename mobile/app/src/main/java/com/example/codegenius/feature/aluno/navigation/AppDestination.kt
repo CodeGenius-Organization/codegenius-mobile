@@ -7,4 +7,6 @@ sealed class AppDestination(val route: String) {
     object Course: AppDestination("course")
     object Lesson: AppDestination("lesson")
     object LessonContent: AppDestination("lessonContent")
+    object LessonExercise: AppDestination("lessonExercise")
+    object LessonTest: AppDestination("lessonTest")
 }

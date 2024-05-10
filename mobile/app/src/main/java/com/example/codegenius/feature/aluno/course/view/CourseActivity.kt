@@ -15,7 +15,9 @@ import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonContentScreen
+import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonExerciseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonScreen
+import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestScreen
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
 
@@ -47,6 +49,32 @@ class CourseActivity : ComponentActivity()  {
                             moduleLessonModel = contentModuleMock.get(0).moduleLessonModel.get(0),
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
+                            },
+                            onNavigationLessonExercise = {
+                                navController.navigate(AppDestination.LessonExercise.route)
+                            },
+                            onNavigationLessonTest = {
+                                navController.navigate(AppDestination.LessonTest.route)
+                            }
+                        )
+                    }
+                    composable(AppDestination.LessonExercise.route) {
+                        LessonExerciseScreen(
+                            onNavigationLessonContent = {
+                                navController.navigate(AppDestination.LessonContent.route)
+                            },
+                            onNavigationLessonTest = {
+                                navController.navigate(AppDestination.LessonTest.route)
+                            }
+                        )
+                    }
+                    composable(AppDestination.LessonTest.route) {
+                        LessonTestScreen(
+                            onNavigationLessonContent = {
+                                navController.navigate(AppDestination.LessonContent.route)
+                            },
+                            onNavigationLessonExercise = {
+                                navController.navigate(AppDestination.LessonExercise.route)
                             }
                         )
                     }

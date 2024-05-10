@@ -29,9 +29,10 @@ import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCo
 @Composable
 fun LessonContentScreen(
     modifier : Modifier = Modifier,
-    moduleLessonModel : ModuleLessonModel = contentModuleMock.get(0)
-        .moduleLessonModel.get(0),
-    onNavigationLessonContent : () -> Unit = {}
+    moduleLessonModel : ModuleLessonModel,
+    onNavigationLessonContent : () -> Unit = {},
+    onNavigationLessonExercise : () -> Unit = {},
+    onNavigationLessonTest: () -> Unit = {}
 ) {
     ModalNavigationDrawer(
         drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
@@ -49,7 +50,7 @@ fun LessonContentScreen(
                     .background(Color(red = 12, green = 15, blue = 26))
                     .padding(top = 90.dp)
             ) {
-                NavigationbarCourse(content = true)
+                NavigationbarCourse(content = true, onNavigationLessonExercise = onNavigationLessonExercise, onNavigationLessonTest = onNavigationLessonTest)
                 LazyColumn {
                     item {
                         Text(
