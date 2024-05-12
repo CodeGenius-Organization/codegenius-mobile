@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -82,12 +83,9 @@ fun LoginScreen(
             .fillMaxSize()
             .background(BackgroundGenius)
             .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(
-            space = 85.dp,
-            alignment = Alignment.CenterVertically
-        )
+        verticalArrangement = Arrangement.Center
     ) {
-        CorporateInsignia()
+        CorporateInsignia(Modifier.padding(bottom = 30.dp))
         Column(
             modifier = Modifier
                 .fillMaxWidth()

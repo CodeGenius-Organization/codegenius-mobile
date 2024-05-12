@@ -83,11 +83,8 @@ fun RegisterScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundGenius)
-            .background(BackgroundGenius),
-        verticalArrangement = Arrangement.spacedBy(
-            space = 28.dp,
-            alignment = Alignment.CenterVertically
-        )
+            .padding(bottom = 20.dp),
+        verticalArrangement = Arrangement.Center,
     ) {
         val name = uiState.name
         val lastName = uiState.lastName
@@ -97,7 +94,7 @@ fun RegisterScreen(
         val visibilityPassword = uiState.visibilityPassword
         val visibilityConfirmPass = uiState.visibilityConfirmPass
 
-        CorporateInsignia()
+        CorporateInsignia(Modifier.padding(28.dp))
 
         Column(
             modifier = Modifier
