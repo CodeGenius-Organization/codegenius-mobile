@@ -18,6 +18,7 @@ import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonContentScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonExerciseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonScreen
+import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestExerciseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestScreen
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 
@@ -77,6 +78,20 @@ class CourseActivity : ComponentActivity()  {
                             },
                             onNavigationLessonExercise = {
                                 navController.navigate(AppDestination.LessonExercise.route)
+                            },
+                            onNavigationLessonExerciseTest = {
+                                navController.navigate(AppDestination.LessonExerciseTest.route)
+                            }
+                        )
+                    }
+                    composable(AppDestination.LessonExerciseTest.route) {
+                        LessonTestExerciseScreen(
+                            questionModel = contentQuestionMock,
+                            onNavigationLessonExercise = {
+                                navController.navigate(AppDestination.LessonExercise.route)
+                            },
+                            onNavigationLessonContent = {
+                                navController.navigate(AppDestination.LessonContent.route)
                             }
                         )
                     }

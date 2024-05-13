@@ -19,6 +19,8 @@
     <string name="test_title">AVISO</string>
     <string name="test_text">Ao clicar no botão \'Iniciar\', a contagem de tempo será ativada, o que impactará diretamente na sua pontuação final ao concluir esta prova. Preste atenção aos enunciados, pois você dispõe de um limite de 3 tentativas a cada 12 horas, como indicado acima onde está escrito \'Quantidade de Vida:\'. Isso significa que, ao esgotar todas as suas chances, será necessário aguardar 12 horas para receber uma vida adicional e realizar uma nova tentativa. Lembre-se de que é fundamental obter uma nota mínima nesta prova para avançar para os próximos módulos. Boa sorte!</string>
     <string name="test_button">Iniciar</string>
+    <string name="test_time_count">Quantidade de vida:</string>
+    <string name="test_exercise_button">Finalizar</string>
 
     <!-- Menu do curso -->
     <string name="course_navigationbar_content">Conteúdo</string>

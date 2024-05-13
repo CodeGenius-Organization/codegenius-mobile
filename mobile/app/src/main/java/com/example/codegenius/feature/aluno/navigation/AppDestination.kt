@@ -9,4 +9,5 @@ sealed class AppDestination(val route: String) {
     object LessonContent: AppDestination("lessonContent")
     object LessonExercise: AppDestination("lessonExercise")
     object LessonTest: AppDestination("lessonTest")
+    object LessonExerciseTest: AppDestination("lessonExerciseTest")
 }
