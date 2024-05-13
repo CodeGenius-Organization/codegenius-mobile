@@ -1,16 +1,28 @@
-package com.example.codegenius.feature.aluno.login.views.screens
+package com.example.codegenius.feature.aluno.login.ui.screens
 
+<<<<<<< HEAD:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/views/screens/LoginScreen.kt
+=======
+import android.util.Log
+>>>>>>> feature/nao-logado:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/ui/screens/LoginScreen.kt
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+<<<<<<< HEAD:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/views/screens/LoginScreen.kt
+=======
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
+>>>>>>> feature/nao-logado:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/ui/screens/LoginScreen.kt
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -20,6 +32,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,14 +43,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.login.viewmodels.LoginScreenViewModel
-import com.example.codegenius.feature.aluno.login.views.components.CorporateInsignia
-import com.example.codegenius.feature.aluno.login.views.states.LoginScreenUiState
+import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
+import com.example.codegenius.feature.aluno.login.ui.components.CorporateInsignia
+import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenState
+import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenUiState
 import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
 
@@ -47,35 +62,39 @@ fun LoginScreen(
     onNavigateToRegister: () -> Unit = {},
     onNavigateToCourse: () -> Unit = {}
 ) {
-    val state by viewModel.uiState.collectAsState()
+
+    val uiState by viewModel.uiState.collectAsState()
+
     LoginScreen(
-        state = state,
+        uiState = uiState,
+        visibilityChange = { viewModel.visibilityChange() },
         onNavigateToRegister = onNavigateToRegister,
-        onNavigateToCourse = onNavigateToCourse
+        onLogin = { viewModel.postLogin(onNavigateToCourse) }
     )
 }
 
 @Composable
 fun LoginScreen(
-    state: LoginScreenUiState = LoginScreenUiState(),
+    uiState: LoginScreenUiState = LoginScreenUiState(),
+    visibilityChange: () -> Unit,
     onNavigateToRegister: () -> Unit = {},
-    onNavigateToCourse: () -> Unit = {}
+    onLogin: () -> Unit
 ) {
-    val email = state.email
-    val password = state.password
+    val email = uiState.email
+    val password = uiState.password
+    val visibility = uiState.visibility
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundGenius)
             .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(
-            space = 85.dp,
-            alignment = Alignment.CenterVertically
-        )
+        verticalArrangement = Arrangement.Center
     ) {
-        CorporateInsignia()
+        CorporateInsignia(Modifier.padding(bottom = 30.dp))
         Column(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(horizontal = 30.dp)
                 .verticalScroll(rememberScrollState())
         ) {
@@ -95,17 +114,18 @@ fun LoginScreen(
                     .background(
                         Color.Transparent
                     ),
+                maxLines = 1,
                 label = {
                     Text(
                         text = stringResource(R.string.login_label_email),
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.White,
                         fontSize = 13.sp,
-                        fontWeight = FontWeight.Light
+                        fontWeight = FontWeight.Normal
                     )
                 },
                 value = email,
-                onValueChange = state.onEmailChange,
+                onValueChange = uiState.onEmailChange,
                 shape = RoundedCornerShape(20),
                 placeholder = {
                     Text(
@@ -136,21 +156,32 @@ fun LoginScreen(
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.White,
                         fontSize = 13.sp,
-                        fontWeight = FontWeight.Light
+                        fontWeight = FontWeight.Normal
                     )
                 },
+                maxLines = 1,
+                visualTransformation = if (visibility) {
+                    VisualTransformation.None
+                } else {
+                    PasswordVisualTransformation()
+                },
                 trailingIcon = {
-                        IconButton(
-                            onClick =  state.visibilityChange
-                        ) {
-                            Icon(
-                                imageVector = state.eyeState(),
-                                contentDescription = null,
-                                tint = Color.White)
-                        }
+                    IconButton(
+                        onClick = visibilityChange
+                    ) {
+                        Icon(
+                            imageVector = if (visibility) {
+                                Icons.Outlined.VisibilityOff
+                            } else {
+                                Icons.Outlined.Visibility
+                            },
+                            contentDescription = null,
+                            tint = Color.White
+                        )
+                    }
                 },
                 value = password,
-                onValueChange = state.onPasswordChange,
+                onValueChange = uiState.onPasswordChange,
                 shape = RoundedCornerShape(20),
                 placeholder = {
                     Text(
@@ -174,7 +205,7 @@ fun LoginScreen(
                 text = AnnotatedString(stringResource(R.string.login_link_forgot_password)),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     color = Color.White,
                     textDecoration = TextDecoration.Underline
                 ),
@@ -187,9 +218,10 @@ fun LoginScreen(
                     .align(alignment = Alignment.CenterHorizontally)
                     .padding(bottom = 11.dp),
                 onClick = {
-                    onNavigateToCourse()
+                    onLogin()
                 },
-                shape = RoundedCornerShape(20)) {
+                shape = RoundedCornerShape(20)
+            ) {
                 Text(
                     text = stringResource(R.string.login_button)
                 )
@@ -201,7 +233,7 @@ fun LoginScreen(
                     .align(Alignment.CenterHorizontally),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     color = Color.White,
                     textDecoration = TextDecoration.Underline
                 ),
@@ -211,10 +243,4 @@ fun LoginScreen(
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen()
 }
