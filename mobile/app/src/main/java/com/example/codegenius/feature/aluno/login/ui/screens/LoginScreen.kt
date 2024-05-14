@@ -1,28 +1,20 @@
 package com.example.codegenius.feature.aluno.login.ui.screens
 
-<<<<<<< HEAD:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/views/screens/LoginScreen.kt
-=======
-import android.util.Log
->>>>>>> feature/nao-logado:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/ui/screens/LoginScreen.kt
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-<<<<<<< HEAD:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/views/screens/LoginScreen.kt
-=======
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
->>>>>>> feature/nao-logado:mobile/app/src/main/java/com/example/codegenius/feature/aluno/login/ui/screens/LoginScreen.kt
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,7 +24,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,10 +40,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
 import com.example.codegenius.feature.aluno.login.ui.components.CorporateInsignia
-import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenState
 import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenUiState
+import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
 import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.PlaceholderGenius
 
