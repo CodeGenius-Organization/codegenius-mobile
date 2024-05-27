@@ -1,7 +1,6 @@
 package com.example.codegenius.feature.aluno.login.ui.viewmodels
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,7 +22,7 @@ class LoginScreenViewModel(
         LoginScreenUiState()
     )
 
-    val state = MutableLiveData<LoginScreenState>(LoginScreenState.Loading)
+    private val state = MutableLiveData<LoginScreenState>(LoginScreenState.Loading)
     val uiState get() = _uiState.asStateFlow()
 
     init {

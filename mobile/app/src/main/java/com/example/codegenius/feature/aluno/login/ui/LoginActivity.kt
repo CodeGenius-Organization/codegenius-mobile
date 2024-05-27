@@ -22,6 +22,7 @@ import com.example.codegenius.feature.aluno.navigation.AppDestination
 import com.example.codegenius.feature.aluno.network.appModule
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.context.GlobalContext.startKoin
 
 class LoginActivity : ComponentActivity() {
@@ -30,8 +31,6 @@ class LoginActivity : ComponentActivity() {
         setContent {
             setWindowStatusBarColor()
             val navController = rememberNavController()
-            val registerVm by inject<RegisterScreenViewModel>()
-            val loginVm by inject<LoginScreenViewModel>()
             App {
                 NavHost(
                     navController = navController,
@@ -39,10 +38,11 @@ class LoginActivity : ComponentActivity() {
                 ) {
                     composable(AppDestination.Login.route) {
                         LoginScreen(
-                            viewModel = loginVm,
+                            viewModel = getViewModel<LoginScreenViewModel>(),
                             onNavigateToRegister = {
                                 navController.navigate(AppDestination.Register.route)
-                            }, onNavigateToCourse = {
+                            },
+                            onNavigateToCourse = {
                                 startActivity(
                                     Intent(
                                         this@LoginActivity,
@@ -53,7 +53,7 @@ class LoginActivity : ComponentActivity() {
                     }
                     composable(AppDestination.Register.route) {
                         RegisterScreen(
-                            viewModel= registerVm,
+                            viewModel= getViewModel<RegisterScreenViewModel>(),
                             onNavigateToLogin = {
                             navController.navigate(AppDestination.Login.route)
                         }
