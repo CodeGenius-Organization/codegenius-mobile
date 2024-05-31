@@ -1,6 +1,7 @@
 package com.example.codegenius.feature.aluno.login.ui.viewmodels
 
 import android.util.Log
+import androidx.compose.material3.SnackbarDuration
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,44 +32,82 @@ class LoginScreenViewModel(
                 onEmailChange = {
                     _uiState.value = _uiState.value.copy(
                         email = it,
+                        emailError = validateEmail(it)
                     )
                 },
                 onPasswordChange = {
                     _uiState.value = _uiState.value.copy(
                         password = it,
+                        passwordError = validatePassword(it)
                     )
                 },
             )
         }
     }
 
+    fun validateEmail(email: String): Boolean {
+        val reg = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+        if (email.isNotBlank() && !reg.matches(email)) {
+            return true
+        }
+        return false
+    }
+
+    fun validatePassword(password: String): Boolean {
+        val reg = Regex("^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$")
+        if (password.isNotBlank() && !reg.matches(password)) {
+            return true
+        }
+        return false
+    }
+
+    fun cleanTextFields(isError: Boolean) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                email = "",
+                password = "",
+                emailError = isError,
+                passwordError = isError
+            )
+        }
+    }
+
     fun postLogin(onNavigateCourse: () -> Unit) {
-        val login = Login(_uiState.value.email, _uiState.value.password)
         viewModelScope.launch {
-            try {
-                state.value = LoginScreenState.Loading
-                val response = repository.postLogin(login)
-                if (response.isSuccessful) {
-                    response.body()?.let { token ->
-                        state.value = LoginScreenState.Success(data = token)
-                        Log.d("###Token", "${token}")
-                        onNavigateCourse()
+            if(uiState.value.emailError || uiState.value.passwordError){
+                cleanTextFields(true)
+                uiState.value.snackbarHostState.showSnackbar(message = "Credenciais inválidas!", withDismissAction = true, duration = SnackbarDuration.Short )
+            } else {
+                val login = Login(_uiState.value.email, _uiState.value.password)
+                try {
+                    state.value = LoginScreenState.Loading
+                    val response = repository.postLogin(login)
+                    if (response.isSuccessful) {
+                        response.body()?.let { token ->
+                            state.value = LoginScreenState.Success(data = token)
+                            cleanTextFields(false)
+                            uiState.value.snackbarHostState.showSnackbar(message = "Logado com sucesso!", withDismissAction = true, duration = SnackbarDuration.Short )
+                            onNavigateCourse()
+                        }
+                            ?: throw Exception("O corpo da resposta está nulo/não veio o token")
+                    } else {
+                        throw Exception("Erro desconhecido")
                     }
-                        ?: throw Exception("O corpo da resposta está nulo")
-                } else {
-                    throw Exception("Erro desconhecido")
+                } catch (e: HttpException) {
+                    cleanTextFields(true)
+                    uiState.value.snackbarHostState.showSnackbar(message = "Credenciais inválidas!", withDismissAction = true, duration = SnackbarDuration.Short )
+                    val message = when (e.code()) {
+                        400 -> "Login Inválido"
+                        404 -> "Email ou senha incorretos"
+                        502 -> "Timeout"
+                        else -> "Erro desconhecido"
+                    }
+                    state.value = LoginScreenState.Error(message)
+                } catch (e: Exception) {
+                    state.value = LoginScreenState.Error(
+                        e.message ?: "Erro desconhecido"
+                    )
                 }
-            }  catch (e: HttpException) {
-                val message = when (e.code()) {
-                    400 -> "Login Inválido"
-                    404 -> "Email ou senha incorretos"
-                    else -> "Erro desconhecido"
-                }
-                state.value = LoginScreenState.Error(message)
-            } catch (e: Exception) {
-                state.value = LoginScreenState.Error(
-                    e.message ?: "Erro desconhecido"
-                )
             }
         }
     }
