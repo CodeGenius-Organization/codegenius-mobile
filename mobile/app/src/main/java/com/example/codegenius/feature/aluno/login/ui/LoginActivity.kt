@@ -13,7 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.codegenius.feature.aluno.course.view.CourseActivity
-import com.example.codegenius.feature.aluno.extentions.setWindowStatusBarColor
+import com.example.codegenius.feature.aluno.shared.util.extentions.setWindowStatusBarColor
 import com.example.codegenius.feature.aluno.login.ui.screens.LoginScreen
 import com.example.codegenius.feature.aluno.login.ui.screens.RegisterScreen
 import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
@@ -43,12 +43,9 @@ class LoginActivity : ComponentActivity() {
                                 navController.navigate(AppDestination.Register.route)
                             },
                             onNavigateToCourse = {
-                                startActivity(
-                                    Intent(
-                                        this@LoginActivity,
-                                        CourseActivity::class.java
-                                    )
-                                )
+                                val intent = Intent(this@LoginActivity, CourseActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             })
                     }
                     composable(AppDestination.Register.route) {

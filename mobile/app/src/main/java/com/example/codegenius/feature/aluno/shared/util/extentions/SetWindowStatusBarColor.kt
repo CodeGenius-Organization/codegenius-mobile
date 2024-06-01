@@ -1,4 +1,4 @@
-package com.example.codegenius.feature.aluno.extentions
+package com.example.codegenius.feature.aluno.shared.util.extentions
 
 import android.app.Activity
 import android.os.Build

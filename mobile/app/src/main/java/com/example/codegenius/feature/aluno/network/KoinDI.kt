@@ -1,5 +1,9 @@
 package com.example.codegenius.feature.aluno.network
 
+import com.example.codegenius.feature.aluno.course.repositories.CourseDetailRepositoryImpl
+import com.example.codegenius.feature.aluno.course.repositories.CourseRepositoryImpl
+import com.example.codegenius.feature.aluno.course.repositories.ICourseDetailRepository
+import com.example.codegenius.feature.aluno.course.repositories.ICourseRepository
 import com.example.codegenius.feature.aluno.login.repositories.LoginRepositoryImpl
 import com.example.codegenius.feature.aluno.login.repositories.ILoginRepository
 import com.example.codegenius.feature.aluno.login.repositories.IRegisterRepository
@@ -16,10 +20,19 @@ val appModule = module {
     single<IRegisterRepository>{
         RegisterRepositoryImpl()
     }
+    single<ICourseRepository>{
+        CourseRepositoryImpl()
+    }
+    single<ICourseDetailRepository>{
+        CourseDetailRepositoryImpl()
+    }
+
     viewModel {
         LoginScreenViewModel(get())
     }
     viewModel {
         RegisterScreenViewModel(get())
     }
+
+
 }
