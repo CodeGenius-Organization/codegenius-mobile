@@ -9,6 +9,7 @@ import com.example.codegenius.feature.aluno.login.models.Login
 import com.example.codegenius.feature.aluno.login.repositories.ILoginRepository
 import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenState
 import com.example.codegenius.feature.aluno.login.ui.states.LoginScreenUiState
+import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -85,8 +86,8 @@ class LoginScreenViewModel(
                     if (response.isSuccessful) {
                         response.body()?.let { token ->
                             state.value = LoginScreenState.Success(data = token)
+                            Util.getInstance().authToken = token
                             cleanTextFields(false)
-                            uiState.value.snackbarHostState.showSnackbar(message = "Logado com sucesso!", withDismissAction = true, duration = SnackbarDuration.Short )
                             onNavigateCourse()
                         }
                             ?: throw Exception("O corpo da resposta está nulo/não veio o token")

@@ -43,12 +43,9 @@ class LoginActivity : ComponentActivity() {
                                 navController.navigate(AppDestination.Register.route)
                             },
                             onNavigateToCourse = {
-                                startActivity(
-                                    Intent(
-                                        this@LoginActivity,
-                                        CourseActivity::class.java
-                                    )
-                                )
+                                val intent = Intent(this@LoginActivity, CourseActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             })
                     }
                     composable(AppDestination.Register.route) {
