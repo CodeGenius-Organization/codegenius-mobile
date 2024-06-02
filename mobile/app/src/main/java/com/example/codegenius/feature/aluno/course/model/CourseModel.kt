@@ -8,8 +8,6 @@ data class CourseModel (
     val courseDescription: String,
     val contentDescription: String,
     val available: Boolean,
-    val languages: List<LanguagesModel>,
-    val status: String,
-    val teacherName: String,
-    val categoryModel: List<CategoryModel>
+    val languages: Set<LanguagesModel>,
+    val categoryModel: Set<CategoryModel>
 )

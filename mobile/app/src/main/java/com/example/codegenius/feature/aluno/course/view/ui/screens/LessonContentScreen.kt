@@ -22,12 +22,14 @@ import com.example.codegenius.R
 import com.example.codegenius.feature.aluno.course.model.ModuleLessonModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonContentScreen(
+    viewModel: CourseDetailViewModel,
     modifier : Modifier = Modifier,
     moduleLessonModel : ModuleLessonModel,
     onNavigationLessonContent : () -> Unit = {},
@@ -84,11 +86,11 @@ fun LessonContentScreen(
     }
 }
 
-@Preview()
-@Composable
-fun LessonContentScreenPreview() {
-    LessonContentScreen(
-        moduleLessonModel = contentModuleMock.get(0)
-            .moduleLessonModel.get(0)
-    )
-}
+//@Preview()
+//@Composable
+//fun LessonContentScreenPreview() {
+//    LessonContentScreen(
+//        moduleLessonModel = contentModuleMock.get(0)
+//            .moduleLessonModel.get(0)
+//    )
+//}

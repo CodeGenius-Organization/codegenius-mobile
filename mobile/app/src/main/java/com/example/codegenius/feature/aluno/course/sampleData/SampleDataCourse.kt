@@ -21,15 +21,13 @@ val contentCoursesMock = listOf(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 language = "Kotlin"
             )
-        ),
-        status = "Concluído",
-        teacherName = "Thiago Hideki",
+        ).toSet(),
         categoryModel = listOf(
             CategoryModel(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 category = "Backend"
             )
-        )
+        ).toSet()
     ),
     CourseModel(
         id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
@@ -42,15 +40,13 @@ val contentCoursesMock = listOf(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 language = "Java"
             )
-        ),
-        status = "Concluído",
-        teacherName = "Thiago Hideki",
+        ).toSet(),
         categoryModel = listOf(
             CategoryModel(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 category = "Backend"
             )
-        )
+        ).toSet()
     ),
     CourseModel(
         id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
@@ -63,15 +59,13 @@ val contentCoursesMock = listOf(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 language = "Python"
             )
-        ),
-        status = "Concluído",
-        teacherName = "Victor Daniel",
+        ).toSet(),
         categoryModel = listOf(
             CategoryModel(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 category = "Database"
             )
-        )
+        ).toSet()
     ),
     CourseModel(
         id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
@@ -84,9 +78,7 @@ val contentCoursesMock = listOf(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 language = "Python"
             )
-        ),
-        status = "Em andamento",
-        teacherName = "Victor Daniel",
+        ).toSet(),
         categoryModel = listOf(
             CategoryModel(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
@@ -96,6 +88,6 @@ val contentCoursesMock = listOf(
                 id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
                 category = "Security"
             )
-        )
+        ).toSet()
     )
 )

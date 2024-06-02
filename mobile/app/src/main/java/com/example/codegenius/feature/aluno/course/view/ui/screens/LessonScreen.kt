@@ -29,11 +29,16 @@ import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleContentList
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDescription
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseScreenViewModel
+import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonScreen(
+    viewModel: CourseDetailViewModel,
     modifier: Modifier = Modifier,
     lessonContent: List<ModuleModel>,
     onNavigationLessonContent : () -> Unit = {}
@@ -95,10 +100,11 @@ fun LessonScreen(
     }
 }
 
-@Preview()
-@Composable
-fun LessonScreenPreview() {
-    LessonScreen(
-        lessonContent = contentModuleMock
-    )
-}
+//@Preview()
+//@Composable
+//fun LessonScreenPreview() {
+//
+//    LessonScreen(
+//        lessonContent = contentModuleMock
+//    )
+//}

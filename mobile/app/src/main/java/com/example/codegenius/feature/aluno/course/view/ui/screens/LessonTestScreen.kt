@@ -25,12 +25,14 @@ import androidx.compose.ui.unit.dp
 import com.example.codegenius.R
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonTestScreen(
+    viewModel: CourseDetailViewModel,
     modifier : Modifier = Modifier,
     onNavigationLessonContent : () -> Unit = {},
     onNavigationLessonExercise : () -> Unit = {},
@@ -94,8 +96,8 @@ fun LessonTestScreen(
     }
 }
 
-@Preview
-@Composable
-fun LessonTestScreenPreview() {
-    LessonTestScreen()
-}
+//@Preview
+//@Composable
+//fun LessonTestScreenPreview() {
+//    LessonTestScreen()
+//}

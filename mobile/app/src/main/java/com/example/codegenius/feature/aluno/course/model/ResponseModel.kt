@@ -4,7 +4,7 @@ import java.util.UUID
 
 data class ResponseModel (
     val id : UUID,
-    val answer : String,
+    val response : String,
     val correct : Boolean,
     val explanation : String
 )

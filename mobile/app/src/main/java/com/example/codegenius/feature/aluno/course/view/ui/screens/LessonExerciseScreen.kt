@@ -30,6 +30,7 @@ import com.example.codegenius.feature.aluno.course.model.QuestionModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.sampleData.contentQuestionMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
 import java.util.UUID
@@ -37,6 +38,7 @@ import java.util.UUID
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonExerciseScreen(
+    viewModel: CourseDetailViewModel,
     modifier : Modifier = Modifier,
     onNavigationLessonContent : () -> Unit = {},
     onNavigationLessonTest : () -> Unit = {},
@@ -68,7 +70,7 @@ fun LessonExerciseScreen(
                             modifier = Modifier.padding(16.dp),
                             color = Color.White
                         )
-                        question.responseModel.forEach { response ->
+                        question.responses.forEach { response ->
                             Row(
                                 modifier = Modifier.padding(top = 8.dp),
                                 verticalAlignment = Alignment.CenterVertically
@@ -84,7 +86,7 @@ fun LessonExerciseScreen(
                                     )
                                 )
                                 Text(
-                                    text = response.answer,
+                                    text = response.response,
                                     modifier = Modifier.padding(start = 8.dp),
                                     color = Color.White
                                 )
@@ -115,10 +117,10 @@ fun LessonExerciseScreen(
 
 
 
-@Preview
-@Composable
-fun LessonExerciseScreenPreview() {
-    LessonExerciseScreen(
-        questionModel = contentQuestionMock
-    )
-}
+//@Preview
+//@Composable
+//fun LessonExerciseScreenPreview() {
+//    LessonExerciseScreen(
+//        questionModel = contentQuestionMock
+//    )
+//}
