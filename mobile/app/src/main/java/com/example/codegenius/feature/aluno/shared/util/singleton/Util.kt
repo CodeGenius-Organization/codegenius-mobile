@@ -10,7 +10,6 @@ class Util {
     lateinit var dataUser: DataUserModel
     companion object{
         private val instance = Util()
-
         fun getInstance(): Util {
             return instance
         }
