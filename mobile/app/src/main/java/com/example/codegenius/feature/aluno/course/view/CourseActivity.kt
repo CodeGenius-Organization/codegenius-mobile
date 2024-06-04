@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -20,7 +21,11 @@ import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonExercis
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestExerciseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestScreen
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseScreenViewModel
+import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
 import com.example.codegenius.feature.aluno.navigation.AppDestination
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 class CourseActivity : ComponentActivity()  {
@@ -32,6 +37,7 @@ class CourseActivity : ComponentActivity()  {
                 NavHost(navController = navController, startDestination = AppDestination.Course.route) {
                     composable(AppDestination.Course.route) {
                         CourseScreen(
+                            viewModel = getViewModel<CourseScreenViewModel>(),
                             courseModel = contentCoursesMock,
                             onNavigateToLesson = {
                                 navController.navigate(AppDestination.Lesson.route)
@@ -40,6 +46,7 @@ class CourseActivity : ComponentActivity()  {
                     }
                     composable(AppDestination.Lesson.route) {
                         LessonScreen(
+                            viewModel = getViewModel<CourseDetailViewModel>(),
                             lessonContent = contentModuleMock,
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
@@ -48,6 +55,7 @@ class CourseActivity : ComponentActivity()  {
                     }
                     composable(AppDestination.LessonContent.route) {
                         LessonContentScreen(
+                            viewModel = getViewModel<CourseDetailViewModel>(),
                             moduleLessonModel = contentModuleMock.get(0).moduleLessonModel.get(0),
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
@@ -62,6 +70,7 @@ class CourseActivity : ComponentActivity()  {
                     }
                     composable(AppDestination.LessonExercise.route) {
                         LessonExerciseScreen(
+                            viewModel = getViewModel<CourseDetailViewModel>(),
                             questionModel = contentQuestionMock,
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
@@ -73,6 +82,7 @@ class CourseActivity : ComponentActivity()  {
                     }
                     composable(AppDestination.LessonTest.route) {
                         LessonTestScreen(
+                            viewModel = getViewModel<CourseDetailViewModel>(),
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
                             },
@@ -86,6 +96,7 @@ class CourseActivity : ComponentActivity()  {
                     }
                     composable(AppDestination.LessonExerciseTest.route) {
                         LessonTestExerciseScreen(
+                            viewModel = getViewModel<CourseDetailViewModel>(),
                             questionModel = contentQuestionMock,
                             onNavigationLessonExercise = {
                                 navController.navigate(AppDestination.LessonExercise.route)

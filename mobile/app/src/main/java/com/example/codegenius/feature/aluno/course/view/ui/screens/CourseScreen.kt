@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.codegenius.feature.aluno.course.model.CourseModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.CourseContentList
+import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseScreenViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 
 val categories = listOf(
@@ -30,6 +31,7 @@ val categories = listOf(
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun CourseScreen(
+    viewModel: CourseScreenViewModel,
     modifier: Modifier = Modifier,
     courseModel: List<CourseModel>,
     onNavigateToLesson : () -> Unit = {}
@@ -71,8 +73,8 @@ fun getCoursesForCategory(categoryName: String, courseModel: List<CourseModel>):
     }
 }
 
-@Preview()
-@Composable
-fun CourseScreenPreview() {
-    CourseScreen(courseModel = contentCoursesMock)
-}
+//@Preview()
+//@Composable
+//fun CourseScreenPreview() {
+//    CourseScreen(courseModel = contentCoursesMock)
+//}

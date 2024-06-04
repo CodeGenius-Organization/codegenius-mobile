@@ -4,8 +4,9 @@ import java.util.UUID
 
 data class QuestionModel (
     val id : UUID,
-    val questionType : String,
+    val answer: String,
     val statement : String,
     val testQuestion : Boolean,
-    val responseModel : List<ResponseModel>
+    val lessonContent : UUID,
+    val responses : List<ResponseModel>
 )

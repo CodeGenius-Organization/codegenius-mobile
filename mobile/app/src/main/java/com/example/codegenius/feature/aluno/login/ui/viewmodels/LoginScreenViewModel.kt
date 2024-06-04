@@ -87,6 +87,7 @@ class LoginScreenViewModel(
                         response.body()?.let { token ->
                             state.value = LoginScreenState.Success(data = token)
                             Util.getInstance().authToken = token
+                            Util.getInstance().email = _uiState.value.email
                             cleanTextFields(false)
                             onNavigateCourse()
                         }

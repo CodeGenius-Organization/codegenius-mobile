@@ -1,7 +1,9 @@
 package com.example.codegenius.feature.aluno.course.repositories
 
+import com.example.codegenius.feature.aluno.course.model.CourseDetailModule
 import com.example.codegenius.feature.aluno.course.model.FeedbackModel
 import com.example.codegenius.feature.aluno.course.model.HeartModel
+import com.example.codegenius.feature.aluno.course.model.QuestionModel
 import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import com.example.codegenius.feature.aluno.network.ApiConfig
 import com.example.codegenius.feature.aluno.network.services.CourseDetailService
@@ -24,14 +26,14 @@ class CourseDetailRepositoryImpl: ICourseDetailRepository {
         return api.patchHeart(userId, heart,  Util.getInstance().authToken.token);
     }
 
-    override suspend fun getCourse(courseId: UUID): Response<Any> {
+    override suspend fun getCourse(courseId: UUID): Response<CourseDetailModule> {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
         return api.getCourse(courseId, Util.getInstance().authToken.token);
     }
 
-    override suspend fun postResultTest(resultExam: ResultTestModel): Response<Any> {
+    override suspend fun postResultTest(resultExam: ResultTestModel): Response<Void> {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
@@ -44,7 +46,7 @@ class CourseDetailRepositoryImpl: ICourseDetailRepository {
             .create(CourseDetailService::class.java)
         return api.postFeedback(feedback, Util.getInstance().authToken.token);
     }
-    override suspend fun getListExercices(lessonContentId: UUID): Response<Any> {
+    override suspend fun getListExercices(lessonContentId: UUID): Response<List<QuestionModel>> {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)

@@ -1,7 +1,9 @@
 package com.example.codegenius.feature.aluno.network.services
 
+import com.example.codegenius.feature.aluno.course.model.CourseDetailModule
 import com.example.codegenius.feature.aluno.course.model.FeedbackModel
 import com.example.codegenius.feature.aluno.course.model.HeartModel
+import com.example.codegenius.feature.aluno.course.model.QuestionModel
 import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import retrofit2.Response
 import retrofit2.http.Body
@@ -31,13 +33,13 @@ interface CourseDetailService {
     suspend fun getCourse(
         @Path("courseId") courseId: UUID,
         @Header("Authorization") authToken: String
-    ): Response<Any>
+    ): Response<CourseDetailModule>
 
     @POST("course/test-attempts/")
     suspend fun postResultTest(
         @Body resultExam: ResultTestModel,
         @Header("Authorization") authToken: String
-    ): Response<Any>
+    ): Response<Void>
 
     @POST("/course/feedbacks")
     suspend fun postFeedback(
@@ -49,5 +51,5 @@ interface CourseDetailService {
     suspend fun getListExercices(
         @Path("lessonContentId") lessonContentId: UUID,
         @Header("Authorization") authToken: String
-    ): Response<Any>
+    ): Response<List<QuestionModel>>
 }

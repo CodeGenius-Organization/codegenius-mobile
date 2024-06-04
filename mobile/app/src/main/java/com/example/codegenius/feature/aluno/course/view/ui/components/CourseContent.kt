@@ -30,13 +30,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.course.model.CategoryModel
 import com.example.codegenius.feature.aluno.course.model.CourseModel
-import com.example.codegenius.feature.aluno.course.model.LanguagesModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.shared.ui.theme.pinkGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.purpleGenius
-import java.util.UUID
 
 @Composable
 fun CourseContent(
@@ -93,7 +90,7 @@ fun CourseContent(
                     fontWeight = FontWeight(700),
                 )
                 LazyRow {
-                    items(courseModel.languages) { languages ->
+                    items(courseModel.languages.toList()) { languages ->
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(3.dp)
                         ){
@@ -128,7 +125,7 @@ fun CourseContent(
                     )
                     Text(
                         modifier = Modifier.padding(start = 3.dp),
-                        text = courseModel.teacherName,
+                        text = "VICTOR DANIEL",
                         color = Color.White,
                         style = MaterialTheme.typography.labelMedium,
                         fontSize = 10.sp,
@@ -136,7 +133,7 @@ fun CourseContent(
                     )
                 }
                 Text(
-                    text = courseModel.status,
+                    text = "Em andamento",
                     color = Color.White,
                     style = MaterialTheme.typography.labelMedium,
                     fontSize = 10.sp,
