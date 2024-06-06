@@ -41,13 +41,14 @@ fun LessonScreen(
     viewModel: CourseDetailViewModel,
     modifier: Modifier = Modifier,
     lessonContent: List<ModuleModel>,
+    onLogout: () -> Unit,
     onNavigationLessonContent : () -> Unit = {}
 ) {
     ModalNavigationDrawer(
         drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
     ) {
         Scaffold(
-            topBar = { Navigationbar() }
+            topBar = { Navigationbar(onLogout = onLogout) }
         ) {
             Column(
                 modifier = modifier

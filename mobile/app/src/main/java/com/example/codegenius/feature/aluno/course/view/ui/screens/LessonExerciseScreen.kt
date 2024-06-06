@@ -42,6 +42,7 @@ fun LessonExerciseScreen(
     modifier : Modifier = Modifier,
     onNavigationLessonContent : () -> Unit = {},
     onNavigationLessonTest : () -> Unit = {},
+    onLogout: () -> Unit,
     questionModel: List<QuestionModel>
 ){
     val selectedResponseMap = remember { mutableMapOf<UUID, UUID?>() }
@@ -52,7 +53,7 @@ fun LessonExerciseScreen(
         Scaffold(
             topBar = {
                 Column {
-                    Navigationbar()
+                    Navigationbar(onLogout = onLogout)
                 }
             }
         ) {

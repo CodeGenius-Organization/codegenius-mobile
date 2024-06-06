@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.course.repositories
 
+import android.util.Log
 import com.example.codegenius.feature.aluno.course.model.CourseModel
 import com.example.codegenius.feature.aluno.course.model.DataUserModel
 import com.example.codegenius.feature.aluno.network.ApiConfig
@@ -15,13 +16,11 @@ class CourseRepositoryImpl: ICourseRepository {
         return api.getUserByEmail(Util.getInstance().email, Util.getInstance().authToken.token);
     }
 
-    override suspend fun getCourses(
-        category: String,
-        courseLength: Int,
-    ): Response<List<CourseModel>> {
+    override suspend fun getCourses(): Response<List<CourseModel>> {
             val api = ApiConfig
                 .getInstance()
                 .create(CourseService::class.java)
-            return api.getCourses(category, courseLength, Util.getInstance().authToken.token);
+            Log.d("## TokenSer", "${Util.getInstance().authToken.token}")
+            return api.getCourses("Bearer ${Util.getInstance().authToken.token}");
     }
 }

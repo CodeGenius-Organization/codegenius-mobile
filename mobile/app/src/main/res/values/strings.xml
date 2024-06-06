@@ -59,49 +59,6 @@
     <string name="dialog_button_accept">ACEITAR</string>
     <string name="dialog_title_term"> Termos e Condições Gerais de Uso e Política de Privacidade da Plataforma CodeGenius</string>
     <string name="dialog_body_term"> Os serviços da plataforma CodeGenius são fornecidos pela pessoa jurídica MindTech, com nome fantasia CodeGenius, inscrita no CNPJ sob o nº 89.007.517/0001-16, titular da propriedade intelectual sobre software, website, aplicativos, conteúdos e demais ativos relacionados à plataforma CodeGenius.
-
-1. Do objeto
-1.1. A plataforma CodeGenius visa licenciar o uso de seu software, website, aplicativos e demais ativos de propriedade intelectual, fornecendo ferramentas para auxiliar e dinamizar o aprendizado de programação básica.
-
-1.2. A plataforma caracteriza-se pela prestação do seguinte serviço: ludificação do ensino de programação básica.
-
-1.3. A plataforma realiza a venda à distância por meio eletrônico dos seguintes produtos ou serviços: acesso a cursos online, materiais educativos, ferramentas de gamificação e suporte técnico.
-
-2. Da aceitação
-2.1. O presente Termo estabelece obrigações contratadas de livre e espontânea vontade, por tempo indeterminado, entre a plataforma e as pessoas físicas ou jurídicas, usuárias do site e do aplicativo.
-
-2.2. Ao utilizar a plataforma, o usuário aceita integralmente as presentes normas e compromete-se a observá-las, sob o risco de aplicação das penalidades cabíveis.
-
-2.3. A aceitação do presente instrumento é imprescindível para o acesso e para a utilização de quaisquer serviços fornecidos pela empresa. Caso não concorde com as disposições deste instrumento, o usuário não deve utilizá-los.
-
-3. Do acesso dos usuários
-3.1. Serão utilizadas todas as soluções técnicas à disposição do responsável pela plataforma para permitir o acesso ao serviço 24 (vinte e quatro) horas por dia, 7 (sete) dias por semana. No entanto, a navegação na plataforma ou em alguma de suas páginas poderá ser interrompida, limitada ou suspensa para atualizações, modificações ou qualquer ação necessária ao seu bom funcionamento.
-
-4. Do cadastro
-4.1. O acesso às funcionalidades da plataforma exigirá a realização de um cadastro prévio e, a depender dos serviços ou produtos escolhidos, o pagamento de determinado valor.
-
-4.2. Ao se cadastrar, o usuário deverá informar dados completos, recentes e válidos, sendo de sua exclusiva responsabilidade manter referidos dados atualizados, bem como o usuário se compromete com a veracidade dos dados fornecidos.
-
-4.3. O usuário se compromete a não informar seus dados cadastrais e/ou de acesso à plataforma a terceiros, responsabilizando-se integralmente pelo uso que deles seja feito.
-
-4.4. Menores de 18 anos e aqueles que não possuírem plena capacidade civil deverão obter previamente o consentimento expresso de seus responsáveis legais para utilização da plataforma e dos serviços ou produtos, sendo de responsabilidade exclusiva dos mesmos o eventual acesso por menores de idade e por aqueles que não possuem plena capacidade civil sem a prévia autorização.
-
-4.5. Mediante a realização do cadastro, o usuário declara e garante expressamente ser plenamente capaz, podendo exercer e usufruir livremente dos serviços e produtos.
-
-4.6. O usuário deverá fornecer um endereço de e-mail válido, através do qual a plataforma realizará todas comunicações necessárias.
-
-4.7. Após a confirmação do cadastro, o usuário possuirá um login e uma senha pessoal, a qual assegura ao usuário o acesso individual à mesma. Desta forma, compete ao usuário exclusivamente a manutenção de referida senha de maneira confidencial e segura, evitando o acesso indevido às informações pessoais.
-
-4.8. Toda e qualquer atividade realizada com o uso da senha será de responsabilidade do usuário, que deverá informar prontamente a plataforma em caso de uso indevido da respectiva senha.
-
-4.9. Não será permitido ceder, vender, alugar ou transferir, de qualquer forma, a conta, que é pessoal e intransferível.
-
-4.10. Caberá ao usuário assegurar que o seu equipamento seja compatível com as características técnicas que viabilizem a utilização da plataforma e dos serviços ou produtos.
-
-4.11. O usuário poderá, a qualquer tempo, requerer o cancelamento de seu cadastro junto ao site ou aplicativo CodeGenius. O seu descadastramento será realizado o mais rapidamente possível, desde que não sejam verificados débitos em aberto.
-
-4.12. O usuário, ao aceitar os Termos e a Política de Privacidade, autoriza expressamente a plataforma a coletar, usar, armazenar, tratar, ceder ou utilizar as informações derivadas do uso dos serviços, do site e quaisquer plataformas, incluindo todas as informações preenchidas pelo usuário no momento em que realizar ou atualizar seu cadastro, além de outras expressamente descritas na Política de Privacidade que deverá ser autorizada pelo usuário.
-
 5. Dos serviços ou produtos
 5.1. A plataforma poderá disponibilizar para o usuário um conjunto específico de funcionalidades e ferramentas para otimizar o uso dos serviços e produtos.
 
@@ -186,6 +143,52 @@ c) Que tiver qualquer comportamento fraudulento, doloso ou que ofenda a terceiro
 
 Com estas condições estabelecidas, a plataforma CodeGenius espera proporcionar um ambiente seguro, eficaz e eficiente para o aprendizado e desenvolvimento dos seus usuários. Se houver dúvidas ou necessidade de mais informações, entre em contato com o nosso suporte.
     </string>
+    <string name="termo_de_uso_1_1">1. Do objeto
+1.1. A plataforma CodeGenius visa licenciar o uso de seu software, website, aplicativos e demais ativos de propriedade intelectual, fornecendo ferramentas para auxiliar e dinamizar o aprendizado de programação básica.</string>
+
+    <string name="termo_de_uso_1_2">1.2. A plataforma caracteriza-se pela prestação do seguinte serviço: ludificação do ensino de programação básica.</string>
+
+    <string name="termo_de_uso_1_3">1.3. A plataforma realiza a venda à distância por meio eletrônico dos seguintes produtos ou serviços: acesso a cursos online, materiais educativos, ferramentas de gamificação e suporte técnico.</string>
+
+    <string name="termo_de_uso_2_1">2. Da aceitação
+2.1. O presente Termo estabelece obrigações contratadas de livre e espontânea vontade, por tempo indeterminado, entre a plataforma e as pessoas físicas ou jurídicas, usuárias do site e do aplicativo.</string>
+
+    <string name="termo_de_uso_2_2">2.2. Ao utilizar a plataforma, o usuário aceita integralmente as presentes normas e compromete-se a observá-las, sob o risco de aplicação das penalidades cabíveis.</string>
+
+    <string name="termo_de_uso_2_3">2.3. A aceitação do presente instrumento é imprescindível para o acesso e para a utilização de quaisquer serviços fornecidos pela empresa. Caso não concorde com as disposições deste instrumento, o usuário não deve utilizá-los.</string>
+
+    <string name="termo_de_uso_3_1">3. Do acesso dos usuários
+3.1. Serão utilizadas todas as soluções técnicas à disposição do responsável pela plataforma para permitir o acesso ao serviço 24 (vinte e quatro) horas por dia, 7 (sete) dias por semana. No entanto, a navegação na plataforma ou em alguma de suas páginas poderá ser interrompida, limitada ou suspensa para atualizações, modificações ou qualquer ação necessária ao seu bom funcionamento.</string>
+
+    <string name="termo_de_uso_4_0">4. Do cadastro</string>
+    <string name="termo_de_uso_4_1">4.1. O acesso às funcionalidades da plataforma exigirá a realização de um cadastro prévio e, a depender dos serviços ou produtos escolhidos, o pagamento de determinado valor.</string>
+    <string name="termo_de_uso_4_2">4.2. Ao se cadastrar, o usuário deverá informar dados completos, recentes e válidos, sendo de sua exclusiva responsabilidade manter referidos dados atualizados, bem como o usuário se compromete com a veracidade dos dados fornecidos.</string>
+
+    <string name="termo_de_uso_4_3">4.3. O usuário se compromete a não informar seus dados cadastrais e/ou de acesso à plataforma a terceiros, responsabilizando-se integralmente pelo uso que deles seja feito.</string>
+
+    <string name="termo_de_uso_4_4">4.4. Menores de 18 anos e aqueles que não possuírem plena capacidade civil deverão obter previamente o consentimento expresso de seus responsáveis legais para utilização da plataforma e dos serviços ou produtos, sendo de responsabilidade exclusiva dos mesmos o eventual acesso por menores de idade e por aqueles que não possuem plena capacidade civil sem a prévia autorização.</string>
+
+    <string name="termo_de_uso_4_5">4.5. Mediante a realização do cadastro, o usuário declara e garante expressamente ser plenamente capaz, podendo exercer e usufruir livremente dos serviços e produtos.</string>
+
+    <string name="termo_de_uso_4_6">4.6. O usuário deverá fornecer um endereço de e-mail válido, através do qual a plataforma realizará todas comunicações necessárias.</string>
+
+    <string name="termo_de_uso_4_7">4.7. Após a confirmação do cadastro, o usuário possuirá um login e uma senha pessoal, a qual assegura ao usuário o acesso individual à mesma. Desta forma, compete ao usuário exclusivamente a manutenção de referida senha de maneira confidencial e segura, evitando o acesso indevido às informações pessoais.</string>
+
+    <string name="termo_de_uso_4_8">4.8. Toda e qualquer atividade realizada com o uso da senha será de responsabilidade do usuário, que deverá informar prontamente a plataforma em caso de uso indevido da respectiva senha.</string>
+
+    <string name="termo_de_uso_4_9">4.9. Não será permitido ceder, vender, alugar ou transferir, de qualquer forma, a conta, que é pessoal e intransferível.</string>
+
+    <string name="termo_de_uso_4_10">4.10. Caberá ao usuário assegurar que o seu equipamento seja compatível com as características técnicas que viabilizem a utilização da plataforma e dos serviços ou produtos.</string>
+
+    <string name="termo_de_uso_4_11">4.11. O usuário poderá, a qualquer tempo, requerer o cancelamento de seu cadastro junto ao site ou aplicativo CodeGenius. O seu descadastramento será realizado o mais rapidamente possível, desde que não sejam verificados débitos em aberto.</string>
+
+    <string name="termo_de_uso_4_12">4.12. O usuário, ao aceitar os Termos e a Política de Privacidade, autoriza expressamente a plataforma a coletar, usar, armazenar, tratar, ceder ou utilizar as informações derivadas do uso dos serviços, do site e quaisquer plataformas, incluindo todas as informações preenchidas pelo usuário no momento em que realizar ou atualizar seu cadastro, além de outras expressamente descritas na Política de Privacidade que deverá ser autorizada pelo usuário.</string>
+
+    <string name="termo_de_uso_5_1">5. Dos serviços ou produtos
+5.1. A plataforma poderá disponibilizar para o usuário um conjunto específico de funcionalidades e ferramentas para otimizar o uso dos serviços e produtos.</string>
+    <!-- Modal Logout -->
+    <string name="modal_logout_title">Tem certeza que deseja sair?</string>
+    <string name="modal_logout_body">Ao clicar em SAIR você terá que logar novamente.</string>
 
 
     <!-- Social -->

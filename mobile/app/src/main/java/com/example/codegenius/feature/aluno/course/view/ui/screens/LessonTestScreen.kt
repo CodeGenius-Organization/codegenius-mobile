@@ -36,6 +36,7 @@ fun LessonTestScreen(
     modifier : Modifier = Modifier,
     onNavigationLessonContent : () -> Unit = {},
     onNavigationLessonExercise : () -> Unit = {},
+    onLogout: () -> Unit,
     onNavigationLessonExerciseTest : () -> Unit = {}
 ){
     ModalNavigationDrawer(
@@ -44,7 +45,7 @@ fun LessonTestScreen(
         Scaffold(
             topBar = {
                 Column {
-                    Navigationbar()
+                    Navigationbar(onLogout = onLogout)
                 }
             }
         ) {

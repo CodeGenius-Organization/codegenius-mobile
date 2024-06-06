@@ -7,5 +7,5 @@ import retrofit2.Response
 interface ICourseRepository {
 
     suspend fun getUserByEmail(): Response<DataUserModel>
-    suspend fun getCourses(category: String, courseLength: Int): Response<List<CourseModel>>
+    suspend fun getCourses(): Response<List<CourseModel>>
 }

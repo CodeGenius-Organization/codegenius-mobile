@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.course.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,11 +9,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.sampleData.contentQuestionMock
 import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
@@ -23,7 +22,7 @@ import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestExe
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonTestScreen
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseScreenViewModel
-import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
+import com.example.codegenius.feature.aluno.login.ui.LoginActivity
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -38,9 +37,13 @@ class CourseActivity : ComponentActivity()  {
                     composable(AppDestination.Course.route) {
                         CourseScreen(
                             viewModel = getViewModel<CourseScreenViewModel>(),
-                            courseModel = contentCoursesMock,
                             onNavigateToLesson = {
                                 navController.navigate(AppDestination.Lesson.route)
+                            },
+                            onLogout = {
+                                val intent = Intent(this@CourseActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
                         )
                     }
@@ -50,6 +53,11 @@ class CourseActivity : ComponentActivity()  {
                             lessonContent = contentModuleMock,
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
+                            },
+                            onLogout = {
+                                val intent = Intent(this@CourseActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
                         )
                     }
@@ -65,6 +73,11 @@ class CourseActivity : ComponentActivity()  {
                             },
                             onNavigationLessonTest = {
                                 navController.navigate(AppDestination.LessonTest.route)
+                            },
+                            onLogout = {
+                                val intent = Intent(this@CourseActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
                         )
                     }
@@ -77,6 +90,11 @@ class CourseActivity : ComponentActivity()  {
                             },
                             onNavigationLessonTest = {
                                 navController.navigate(AppDestination.LessonTest.route)
+                            },
+                            onLogout = {
+                                val intent = Intent(this@CourseActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
                         )
                     }
@@ -91,6 +109,11 @@ class CourseActivity : ComponentActivity()  {
                             },
                             onNavigationLessonExerciseTest = {
                                 navController.navigate(AppDestination.LessonExerciseTest.route)
+                            },
+                            onLogout = {
+                                val intent = Intent(this@CourseActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
                         )
                     }
@@ -103,6 +126,11 @@ class CourseActivity : ComponentActivity()  {
                             },
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
+                            },
+                            onLogout = {
+                                val intent = Intent(this@CourseActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
                         )
                     }

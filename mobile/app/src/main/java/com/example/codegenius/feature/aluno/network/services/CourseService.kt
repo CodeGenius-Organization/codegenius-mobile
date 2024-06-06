@@ -8,10 +8,8 @@ import retrofit2.http.Header
 import retrofit2.http.Path
 
 interface CourseService {
-    @GET("course/courses/category/{category}/none/{courseLength}")
+    @GET("course/courses/")
     suspend fun getCourses(
-        @Path("category") category: String,
-        @Path("courseLength") courseLength: Int,
         @Header("Authorization") authToken: String
     ): Response<List<CourseModel>>
 

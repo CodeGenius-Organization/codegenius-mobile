@@ -39,7 +39,6 @@ class LoginScreenViewModel(
                 onPasswordChange = {
                     _uiState.value = _uiState.value.copy(
                         password = it,
-                        passwordError = validatePassword(it)
                     )
                 },
             )
@@ -54,13 +53,6 @@ class LoginScreenViewModel(
         return false
     }
 
-    fun validatePassword(password: String): Boolean {
-        val reg = Regex("^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$")
-        if (password.isNotBlank() && !reg.matches(password)) {
-            return true
-        }
-        return false
-    }
 
     fun cleanTextFields(isError: Boolean) {
         _uiState.update { currentState ->
@@ -75,9 +67,13 @@ class LoginScreenViewModel(
 
     fun postLogin(onNavigateCourse: () -> Unit) {
         viewModelScope.launch {
-            if(uiState.value.emailError || uiState.value.passwordError){
+            if (uiState.value.emailError || uiState.value.passwordError) {
                 cleanTextFields(true)
-                uiState.value.snackbarHostState.showSnackbar(message = "Credenciais inválidas!", withDismissAction = true, duration = SnackbarDuration.Short )
+                uiState.value.snackbarHostState.showSnackbar(
+                    message = "Credenciais inválidas!",
+                    withDismissAction = true,
+                    duration = SnackbarDuration.Short
+                )
             } else {
                 val login = Login(_uiState.value.email, _uiState.value.password)
                 try {
@@ -97,7 +93,11 @@ class LoginScreenViewModel(
                     }
                 } catch (e: HttpException) {
                     cleanTextFields(true)
-                    uiState.value.snackbarHostState.showSnackbar(message = "Credenciais inválidas!", withDismissAction = true, duration = SnackbarDuration.Short )
+                    uiState.value.snackbarHostState.showSnackbar(
+                        message = "Credenciais inválidas!",
+                        withDismissAction = true,
+                        duration = SnackbarDuration.Short
+                    )
                     val message = when (e.code()) {
                         400 -> "Login Inválido"
                         404 -> "Email ou senha incorretos"
