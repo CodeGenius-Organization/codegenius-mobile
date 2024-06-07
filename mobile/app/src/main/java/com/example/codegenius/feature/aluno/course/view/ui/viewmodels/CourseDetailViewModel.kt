@@ -8,6 +8,7 @@ import com.example.codegenius.feature.aluno.course.model.FeedbackModel
 import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import com.example.codegenius.feature.aluno.course.repositories.ICourseDetailRepository
 import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
+import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.util.UUID
@@ -74,6 +75,7 @@ class CourseDetailViewModel(
                 if (response.isSuccessful) {
                     response.body()?.let { detail ->
                         state.value = CourseDetailState.Success(data = detail)
+                        Util.getInstance().modules = detail.modules.toList()
                         Log.d("## CourseDetail",  detail.toString())
                     }
                         ?: throw Exception("Sem detalhes do curso!")

@@ -63,7 +63,6 @@ class CourseActivity : ComponentActivity()  {
                     composable(AppDestination.LessonContent.route) {
                         LessonContentScreen(
                             viewModel = getViewModel<CourseDetailViewModel>(),
-                            moduleLessonModel = contentModuleMock.get(0).lessons.get(0),
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
                             },

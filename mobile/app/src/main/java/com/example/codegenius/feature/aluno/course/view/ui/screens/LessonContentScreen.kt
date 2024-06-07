@@ -25,21 +25,17 @@ import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDraw
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
+import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonContentScreen(
     viewModel: CourseDetailViewModel,
-    modifier : Modifier = Modifier,
-    moduleLessonModel : ModuleLessonModel,
     onNavigationLessonContent : () -> Unit = {},
     onNavigationLessonExercise : () -> Unit = {},
     onLogout: () -> Unit,
     onNavigationLessonTest: () -> Unit = {}
 ) {
-    ModalNavigationDrawer(
-        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
-    ) {
         Scaffold(
             topBar = {
                 Column {
@@ -47,17 +43,24 @@ fun LessonContentScreen(
                 }
             }
         ) {
+            ModalNavigationDrawer(
+                modifier = Modifier.padding(it),
+                drawerContent = {
+                    ModuleDrawer(
+                        moduleModel = Util.getInstance().modules,
+                        onNavigationLessonContent = onNavigationLessonContent)
+                }
+            ) {
             Column(
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxSize()
                     .background(Color(red = 12, green = 15, blue = 26))
-                    .padding(top = 90.dp)
             ) {
                 NavigationbarCourse(content = true, onNavigationLessonExercise = onNavigationLessonExercise, onNavigationLessonTest = onNavigationLessonTest)
                 LazyColumn {
                     item {
                         Text(
-                            text = stringResource(R.string.course_description_label),
+                            text = Util.getInstance().lessonContent.title,
                             modifier = Modifier
                                 .padding(
                                     start = 16.dp, end = 16.dp, top = 20.dp, bottom = 30.dp
@@ -70,7 +73,7 @@ fun LessonContentScreen(
                     }
                     item {
                         Text(
-                            text = moduleLessonModel.lessonContent.content,
+                            text = Util.getInstance().lessonContent.content,
                             modifier = Modifier
                                 .padding(
                                     start = 16.dp, end = 16.dp, bottom = 25.dp
