@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.course.view.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +35,7 @@ import com.example.codegenius.feature.aluno.course.model.CourseModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentCoursesMock
 import com.example.codegenius.feature.aluno.shared.ui.theme.pinkGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.purpleGenius
+import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 
 @Composable
 fun CourseContent(
@@ -45,7 +47,10 @@ fun CourseContent(
         shape = RoundedCornerShape(8.dp),
         shadowElevation = 4.dp,
         modifier = modifier,
-        onClick = { onNavigateToLesson() }
+        onClick = {
+            Util.getInstance().courseId = courseModel.id
+            Log.d("##Click",courseModel.toString())
+            onNavigateToLesson() }
     ) {
         Column(
             modifier = Modifier

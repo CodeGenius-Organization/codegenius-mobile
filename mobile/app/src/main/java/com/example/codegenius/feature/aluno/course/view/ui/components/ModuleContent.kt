@@ -73,6 +73,6 @@ fun LessonContent(lesson: ModuleLessonModel, order: Int) {
 fun ModuleContentPreview() {
     ModuleContent(
         order = 1,
-        moduleLessonModel = contentModuleMock.get(0).moduleLessonModel.get(0)
+        moduleLessonModel = contentModuleMock.get(0).lessons.get(0)
     )
 }

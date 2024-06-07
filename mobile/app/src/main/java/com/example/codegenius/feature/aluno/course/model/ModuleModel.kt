@@ -4,7 +4,7 @@ import java.util.UUID
 
 data class ModuleModel(
     val id: UUID,
-    val name: String,
+    val moduleName: String,
     val moduleOrder: Int,
-    val moduleLessonModel: List<ModuleLessonModel>
+    val lessons: List<ModuleLessonModel>
 )

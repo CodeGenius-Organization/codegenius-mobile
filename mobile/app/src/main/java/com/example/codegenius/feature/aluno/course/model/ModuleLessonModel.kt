@@ -7,5 +7,5 @@ data class ModuleLessonModel (
     val lessonTitle: String,
     val lessonOrder: Int,
     val contentDescription: String,
-    val lessonContentModel: LessonContentModel
+    val lessonContent: LessonContentModel
 )

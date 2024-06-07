@@ -37,11 +37,11 @@ fun ModuleContentList(
             fontWeight = FontWeight(400)
         )
         Column {
-            val sortedLessons = moduleModel.moduleLessonModel.sortedBy { it.lessonOrder }
+            val sortedLessons = moduleModel.lessons.sortedBy { it.lessonOrder }
             sortedLessons.forEachIndexed { index, moduleLesson ->
                 ModuleContent(moduleLessonModel = moduleLesson, order = moduleModel.moduleOrder, onNavigationLessonContent = onNavigationLessonContent)
 
-                if (index < moduleModel.moduleLessonModel.size - 1) {
+                if (index < moduleModel.lessons.size - 1) {
                     HorizontalDivider(
                         modifier = Modifier
                             .padding(horizontal = 16.dp)

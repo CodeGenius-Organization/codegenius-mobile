@@ -56,7 +56,7 @@ fun ModuleDescription(
 fun ModuleDescriptionPreview() {
     ModuleDescription(
         lessonContentModel = contentModuleMock.get(0)
-            .moduleLessonModel.get(0)
-            .lessonContentModel
+            .lessons.get(0)
+            .lessonContent
     )
 }

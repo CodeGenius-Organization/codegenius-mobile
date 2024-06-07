@@ -2,6 +2,7 @@ package com.example.codegenius.feature.aluno.shared.ui.components
 
 import android.util.Log
 import android.util.MutableBoolean
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
+import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 
 @Composable
 fun Navigationbar(
@@ -45,11 +47,10 @@ fun Navigationbar(
     var showDialog by remember{
        mutableStateOf(false)
     }
-
-    Log.d("## Modal Logout", "${showDialog}")
     Row (
         modifier = modifier
             .fillMaxWidth()
+            .background(BackgroundGenius)
             .padding(vertical = 15.dp, horizontal = 10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically

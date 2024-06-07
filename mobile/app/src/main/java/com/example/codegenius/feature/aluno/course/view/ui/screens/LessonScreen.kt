@@ -1,111 +1,128 @@
 package com.example.codegenius.feature.aluno.course.view.ui.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.course.model.LessonContentModel
-import com.example.codegenius.feature.aluno.course.model.ModuleLessonModel
-import com.example.codegenius.feature.aluno.course.model.ModuleModel
 import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
-import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleContentList
-import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDescription
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
+import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
+import com.example.codegenius.feature.aluno.course.view.ui.states.CourseScreenState
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
-import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseScreenViewModel
-import com.example.codegenius.feature.aluno.login.ui.viewmodels.LoginScreenViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
-import org.koin.androidx.viewmodel.ext.android.getViewModel
+import com.example.codegenius.feature.aluno.shared.ui.theme.BackgroundGenius
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonScreen(
     viewModel: CourseDetailViewModel,
-    modifier: Modifier = Modifier,
-    lessonContent: List<ModuleModel>,
     onLogout: () -> Unit,
-    onNavigationLessonContent : () -> Unit = {}
+    onNavigationLessonContent: () -> Unit = {}
 ) {
-    ModalNavigationDrawer(
-        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
+    viewModel.getCourseDetail();
+
+    val state by viewModel.state.observeAsState()
+    Scaffold(
+        topBar = { Navigationbar(onLogout = onLogout) },
+        modifier = Modifier.background(BackgroundGenius)
     ) {
-        Scaffold(
-            topBar = { Navigationbar(onLogout = onLogout) }
-        ) {
-            Column(
-                modifier = modifier
-                    .fillMaxSize()
-                    .background(Color(red = 12, green = 15, blue = 26))
-                    .padding(top = 100.dp)
-            ) {
-                LazyColumn(
-                    modifier = Modifier
-                        .padding(
-                            top = 8.dp,
-                        )
-                        .fillMaxWidth()
-                ) {
-                    item {
-                        Text(
-                            text = stringResource(R.string.modulo_description_label),
-                            modifier = Modifier
-                                .padding(
-                                    start = 16.dp, end = 16.dp, bottom = 30.dp
-                                )
-                                .fillMaxWidth(),
-                            color = Color.White,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight(400)
+
+        when (state) {
+            is CourseDetailState.Loading -> {
+                Text(text = "Loading")
+            }
+
+            is CourseDetailState.Error -> {
+                Text(text = "Error")
+            }
+
+            is CourseDetailState.Success -> {
+                val data = (state as CourseDetailState.Success).data
+                ModalNavigationDrawer(
+                    modifier = Modifier.padding(it),
+                    drawerContent = {
+                        ModuleDrawer(
+                            moduleModel = data.modules.toList(),
+                            onNavigationLessonContent = onNavigationLessonContent
                         )
                     }
-                    items(lessonContent.sortedBy { it.moduleOrder }) { moduleModel ->
-                        Text(
-                            text = moduleModel.name + ":",
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(BackgroundGenius)
+                            .padding(top = 10.dp)
+                    ) {
+                        val data = (state as CourseDetailState.Success).data
+                        Column(
                             modifier = Modifier
                                 .padding(
-                                    start = 16.dp, end = 16.dp
+                                    top = 8.dp,
                                 )
-                                .fillMaxWidth(),
-                            color = Color.White,
-                            fontSize = 23.sp,
-                            fontWeight = FontWeight(400)
-                        )
-                        val sortedLessons = moduleModel.moduleLessonModel.sortedBy { it.lessonOrder }
-                        sortedLessons.forEachIndexed { index, moduleLesson ->
-                            ModuleDescription(
-                                lessonContentModel = moduleLesson.lessonContentModel
+                                .fillMaxWidth()
+                        ) {
+                            Text(
+                                text = stringResource(R.string.modulo_description_label),
+                                modifier = Modifier
+                                    .padding(start = 16.dp, end = 16.dp, bottom = 30.dp)
+                                    .fillMaxWidth(),
+                                color = Color.White,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(400)
+                            )
+
+                            Text(
+                                text = data.title,
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .fillMaxWidth(),
+                                color = Color.White,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(400)
+                            )
+                            Text(
+                                text = data.courseDescription,
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .fillMaxWidth(),
+                                color = Color.White,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400)
+                            )
+                            Text(
+                                text = data.contentDescription,
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .fillMaxWidth(),
+                                color = Color.White,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400)
                             )
                         }
                     }
+
                 }
+            }
+
+            else -> {
+                Log.d("## Erro", "lukinhas")
             }
         }
     }
 }
-
-//@Preview()
-//@Composable
-//fun LessonScreenPreview() {
-//
-//    LessonScreen(
-//        lessonContent = contentModuleMock
-//    )
-//}

@@ -1,21 +1,22 @@
 package com.example.codegenius.feature.aluno.course.view.ui.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.codegenius.feature.aluno.course.model.CourseDetailModule
 import com.example.codegenius.feature.aluno.course.model.FeedbackModel
-import com.example.codegenius.feature.aluno.course.model.QuestionModel
 import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import com.example.codegenius.feature.aluno.course.repositories.ICourseDetailRepository
+import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import retrofit2.Response
 import java.util.UUID
 
 class CourseDetailViewModel(
     private val repository: ICourseDetailRepository
 ) : ViewModel() {
+
+    val state = MutableLiveData<CourseDetailState>(CourseDetailState.Loading)
 
     fun getHeart(userId: UUID) {
         viewModelScope.launch {
@@ -23,7 +24,7 @@ class CourseDetailViewModel(
                 val response = repository.getHeart(userId)
                 if (response.isSuccessful) {
                     response.body()?.let { detail ->
-                        Log.d("##Get Course", detail.toString())
+                        Log.d("##Get Heart", detail.toString())
                     }
                         ?: throw Exception("Sem vidas cadastradas!")
                 } else {
@@ -45,6 +46,7 @@ class CourseDetailViewModel(
             try {
                 val response = repository.patchHeart(userId, 2)
                 if (response.isSuccessful) {
+                    Log.d("## CourseDetail", response.body().toString())
                     response.body()?.let { hearts ->
                         Log.d("##Get Course",hearts.toString())
                     }
@@ -63,15 +65,18 @@ class CourseDetailViewModel(
         }
     }
 
-    fun getCourseDetail(courseId: UUID) {
+    fun getCourseDetail() {
         viewModelScope.launch {
             try {
-                val response = repository.getCourse(courseId)
+                state.value = CourseDetailState.Loading
+                val response = repository.getCourse()
+                Log.d("## Response", "${response}")
                 if (response.isSuccessful) {
                     response.body()?.let { detail ->
-                        Log.d("##Get Course", detail.toString())
+                        state.value = CourseDetailState.Success(data = detail)
+                        Log.d("## CourseDetail",  detail.toString())
                     }
-                        ?: throw Exception("Sem cursos cadastrados!")
+                        ?: throw Exception("Sem detalhes do curso!")
                 } else {
                     throw Exception("Erro desconhecido")
                 }
@@ -80,8 +85,15 @@ class CourseDetailViewModel(
                     400 -> "Login Inválido"
                     404 -> "Email ou senha incorretos"
                     502 -> "Timeout"
-                    else -> "Erro desconhecido"
+                    else -> "Catch - Erro desconhecido"
                 }
+                state.value = CourseDetailState.Error(message)
+                Log.d("## Errinho", e.toString())
+            }  catch (e: Exception) {
+                state.value = CourseDetailState.Error(
+                    e.message ?: "Erro desconhecido"
+                )
+                Log.d("## Errinho", e.toString())
             }
         }
     }

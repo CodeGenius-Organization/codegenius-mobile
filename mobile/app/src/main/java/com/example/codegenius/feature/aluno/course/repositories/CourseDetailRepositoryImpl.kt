@@ -1,5 +1,6 @@
 package com.example.codegenius.feature.aluno.course.repositories
 
+import android.util.Log
 import com.example.codegenius.feature.aluno.course.model.CourseDetailModule
 import com.example.codegenius.feature.aluno.course.model.FeedbackModel
 import com.example.codegenius.feature.aluno.course.model.HeartModel
@@ -23,14 +24,15 @@ class CourseDetailRepositoryImpl: ICourseDetailRepository {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
-        return api.patchHeart(userId, heart,  Util.getInstance().authToken.token);
+        return api.patchHeart(userId, heart, Util.getInstance().authToken.token);
     }
 
-    override suspend fun getCourse(courseId: UUID): Response<CourseDetailModule> {
+    override suspend fun getCourse(): Response<CourseDetailModule> {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
-        return api.getCourse(courseId, Util.getInstance().authToken.token);
+        Log.d("## ID","${Util.getInstance().courseId}")
+        return api.getCourse(Util.getInstance().courseId, "Bearer ${Util.getInstance().authToken.token}");
     }
 
     override suspend fun postResultTest(resultExam: ResultTestModel): Response<Void> {

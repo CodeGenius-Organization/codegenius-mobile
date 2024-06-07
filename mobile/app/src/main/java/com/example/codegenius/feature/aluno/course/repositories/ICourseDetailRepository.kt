@@ -11,7 +11,7 @@ import java.util.UUID
 interface ICourseDetailRepository {
     suspend fun getHeart(userId: UUID): Response<HeartModel>
     suspend fun patchHeart(userId: UUID, heart: Int): Response<HeartModel>
-    suspend fun getCourse(courseId: UUID): Response<CourseDetailModule>
+    suspend fun getCourse(): Response<CourseDetailModule>
     suspend fun postResultTest(resultExam: ResultTestModel): Response<Void>
     suspend fun postFeedback(feedback: FeedbackModel): Response<Void>
     suspend fun getListExercices(lessonContentId: UUID): Response<List<QuestionModel>>

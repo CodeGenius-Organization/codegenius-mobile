@@ -70,7 +70,7 @@ fun LessonContentScreen(
                     }
                     item {
                         Text(
-                            text = moduleLessonModel.lessonContentModel.content,
+                            text = moduleLessonModel.lessonContent.content,
                             modifier = Modifier
                                 .padding(
                                     start = 16.dp, end = 16.dp, bottom = 25.dp
@@ -78,7 +78,6 @@ fun LessonContentScreen(
                                 .fillMaxWidth(),
                             color = Color.White,
                             fontSize = 16.sp
-
                         )
                     }
                 }

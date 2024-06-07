@@ -32,7 +32,7 @@ fun ModuleDrawer(
         ) {
             items(moduleModel.sortedBy { it.moduleOrder }) { module ->
                 ModuleContentList(
-                    title = module.name,
+                    title = module.moduleName,
                     moduleModel = module,
                     onNavigationLessonContent = onNavigationLessonContent
                 )
@@ -41,8 +41,8 @@ fun ModuleDrawer(
     }
 }
 
-@Preview()
-@Composable
-fun ModuleDrawerPreview() {
-    ModuleDrawer(moduleModel = contentModuleMock)
-}
+//@Preview()
+//@Composable
+//fun ModuleDrawerPreview() {
+//    ModuleDrawer(moduleModel = contentModuleMock)
+//}

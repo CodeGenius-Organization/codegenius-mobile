@@ -20,7 +20,6 @@ class CourseRepositoryImpl: ICourseRepository {
             val api = ApiConfig
                 .getInstance()
                 .create(CourseService::class.java)
-            Log.d("## TokenSer", "${Util.getInstance().authToken.token}")
             return api.getCourses("Bearer ${Util.getInstance().authToken.token}");
     }
 }

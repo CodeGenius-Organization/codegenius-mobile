@@ -24,7 +24,6 @@ class CourseScreenViewModel(
                 state.value = CourseScreenState.Loading
                 val response = repository.getCourses()
                 if (response.isSuccessful) {
-                    Log.d("## Response", response.body().toString())
                     response.body()?.let { listCourses->
                         state.value = CourseScreenState.Success(data = listCourses)
                     }
@@ -54,7 +53,6 @@ class CourseScreenViewModel(
                 val response = repository.getUserByEmail()
                 if (response.isSuccessful) {
                     response.body()?.let { dataUser ->
-                        Log.d("##Get Course", dataUser.toString())
                         Util.getInstance().dataUser = dataUser
                     }
                         ?: throw Exception("Sem cursos cadastrados!")
