@@ -36,16 +36,14 @@ fun NavigationbarCourse(
 ) {
     Row(
         modifier = modifier
-            .fillMaxWidth()
-            .horizontalScroll(rememberScrollState()),
-        horizontalArrangement = Arrangement.SpaceAround,
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         IconButton(
-            modifier = Modifier.width(150.dp),
+            modifier = Modifier.weight(0.33f),
             onClick = { onNagivationLessonContent() }
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
@@ -72,11 +70,10 @@ fun NavigationbarCourse(
             }
         }
         IconButton(
-            modifier = Modifier.width(150.dp),
+            modifier = Modifier.weight(0.33f),
             onClick = { onNavigationLessonExercise() }
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
@@ -103,11 +100,11 @@ fun NavigationbarCourse(
             }
         }
         IconButton(
-            modifier = Modifier.width(150.dp),
+            modifier = Modifier.weight(0.3f),
             onClick = { onNavigationLessonTest() }
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
+
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(

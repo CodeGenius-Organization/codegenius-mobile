@@ -33,23 +33,21 @@ import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDraw
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
+import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import java.util.UUID
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonTestExerciseScreen(
     viewModel: CourseDetailViewModel,
-    modifier : Modifier = Modifier,
-    onNavigationLessonContent : () -> Unit = {},
-    onNavigationLessonExercise : () -> Unit = {},
+    modifier: Modifier = Modifier,
+    onNavigationLessonContent: () -> Unit = {},
+    onNavigationLessonExercise: () -> Unit = {},
     onLogout: () -> Unit,
     questionModel: List<QuestionModel>
-){
+) {
     val selectedResponseMap = remember { mutableMapOf<UUID, UUID?>() }
 
-    ModalNavigationDrawer(
-        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
-    ) {
         Scaffold(
             topBar = {
                 Column {
@@ -57,13 +55,26 @@ fun LessonTestExerciseScreen(
                 }
             }
         ) {
+//            ModalNavigationDrawer(
+//                modifier = Modifier.padding(it),
+//                drawerContent = {
+//                    ModuleDrawer(
+//                        moduleModel = Util.getInstance().modules,
+//                        onNavigationLessonContent = onNavigationLessonContent
+//                    )
+//                }
+//            ) {
             Column(
                 modifier = modifier
                     .fillMaxSize()
                     .background(Color(red = 12, green = 15, blue = 26))
                     .padding(top = 90.dp)
             ) {
-                NavigationbarCourse(test = true, onNagivationLessonContent = onNavigationLessonContent, onNavigationLessonExercise = onNavigationLessonExercise)
+                NavigationbarCourse(
+                    test = true,
+                    onNagivationLessonContent = onNavigationLessonContent,
+                    onNavigationLessonExercise = onNavigationLessonExercise
+                )
                 Text(
                     text = stringResource(R.string.test_time_count) + "00:00:00", //TODO
                     modifier = Modifier.padding(16.dp),
@@ -119,7 +130,7 @@ fun LessonTestExerciseScreen(
             }
         }
     }
-}
+//}
 
 //@Preview
 //@Composable

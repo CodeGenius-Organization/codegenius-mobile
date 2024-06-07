@@ -8,6 +8,7 @@ import com.example.codegenius.feature.aluno.course.model.FeedbackModel
 import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import com.example.codegenius.feature.aluno.course.repositories.ICourseDetailRepository
 import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
+import com.example.codegenius.feature.aluno.course.view.ui.states.HeartState
 import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -18,14 +19,18 @@ class CourseDetailViewModel(
 ) : ViewModel() {
 
     val state = MutableLiveData<CourseDetailState>(CourseDetailState.Loading)
+    val heartState = MutableLiveData<HeartState>(HeartState.Loading)
 
-    fun getHeart(userId: UUID) {
+    fun getHeart() {
         viewModelScope.launch {
             try {
-                val response = repository.getHeart(userId)
+                heartState.value = HeartState.Loading
+                val response = repository.getHeart()
                 if (response.isSuccessful) {
-                    response.body()?.let { detail ->
-                        Log.d("##Get Heart", detail.toString())
+                    response.body()?.let { hearts ->
+                        heartState.value = HeartState.Success(data = hearts)
+                        // Guardar no util
+                        Log.d("##Get Heart", hearts.toString())
                     }
                         ?: throw Exception("Sem vidas cadastradas!")
                 } else {
@@ -36,8 +41,15 @@ class CourseDetailViewModel(
                     400 -> "Login Inválido"
                     404 -> "Email ou senha incorretos"
                     502 -> "Timeout"
-                    else -> "Erro desconhecido"
+                    else -> "Catch - Erro desconhecido"
                 }
+                state.value = CourseDetailState.Error(message)
+                Log.d("## Errinho", e.toString())
+            }catch (e: Exception) {
+                state.value = CourseDetailState.Error(
+                    e.message ?: "Erro desconhecido"
+                )
+                Log.d("## Errinho", e.toString())
             }
         }
     }

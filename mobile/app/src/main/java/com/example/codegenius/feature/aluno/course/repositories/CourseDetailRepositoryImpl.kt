@@ -13,11 +13,11 @@ import retrofit2.Response
 import java.util.UUID
 
 class CourseDetailRepositoryImpl: ICourseDetailRepository {
-    override suspend fun getHeart(userId: UUID): Response<HeartModel> {
+    override suspend fun getHeart(): Response<HeartModel> {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
-        return api.getHeart(userId, Util.getInstance().authToken.token);
+        return api.getHeart(Util.getInstance().dataUser.id, Util.getInstance().authToken.token);
     }
 
     override suspend fun patchHeart(userId: UUID, heart: Int): Response<HeartModel> {

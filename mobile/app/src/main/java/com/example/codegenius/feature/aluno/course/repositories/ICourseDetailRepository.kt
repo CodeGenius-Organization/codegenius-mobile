@@ -9,7 +9,7 @@ import retrofit2.Response
 import java.util.UUID
 
 interface ICourseDetailRepository {
-    suspend fun getHeart(userId: UUID): Response<HeartModel>
+    suspend fun getHeart(): Response<HeartModel>
     suspend fun patchHeart(userId: UUID, heart: Int): Response<HeartModel>
     suspend fun getCourse(): Response<CourseDetailModule>
     suspend fun postResultTest(resultExam: ResultTestModel): Response<Void>

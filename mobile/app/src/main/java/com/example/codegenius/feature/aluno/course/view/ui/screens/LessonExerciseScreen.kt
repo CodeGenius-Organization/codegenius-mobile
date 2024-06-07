@@ -33,23 +33,22 @@ import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDraw
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
+import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import java.util.UUID
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonExerciseScreen(
     viewModel: CourseDetailViewModel,
-    modifier : Modifier = Modifier,
-    onNavigationLessonContent : () -> Unit = {},
-    onNavigationLessonTest : () -> Unit = {},
+    modifier: Modifier = Modifier,
+    onNavigationLessonContent: () -> Unit = {},
+    onNavigationLessonTest: () -> Unit = {},
     onLogout: () -> Unit,
     questionModel: List<QuestionModel>
-){
+) {
     val selectedResponseMap = remember { mutableMapOf<UUID, UUID?>() }
 
-    ModalNavigationDrawer(
-        drawerContent = { ModuleDrawer(moduleModel = contentModuleMock, onNavigationLessonContent = onNavigationLessonContent) }
-    ) {
+
         Scaffold(
             topBar = {
                 Column {
@@ -57,13 +56,25 @@ fun LessonExerciseScreen(
                 }
             }
         ) {
+            ModalNavigationDrawer(
+                modifier = Modifier.padding(it),
+                drawerContent = {
+                    ModuleDrawer(
+                        moduleModel = Util.getInstance().modules,
+                        onNavigationLessonContent = onNavigationLessonContent
+                    )
+                }
+            ) {
             Column(
                 modifier = modifier
                     .fillMaxSize()
                     .background(Color(red = 12, green = 15, blue = 26))
-                    .padding(top = 90.dp)
             ) {
-                NavigationbarCourse(exercise = true, onNagivationLessonContent = onNavigationLessonContent, onNavigationLessonTest = onNavigationLessonTest)
+                NavigationbarCourse(
+                    exercise = true,
+                    onNagivationLessonContent = onNavigationLessonContent,
+                    onNavigationLessonTest = onNavigationLessonTest
+                )
                 LazyColumn {
                     itemsIndexed(questionModel) { index, question ->
                         Text(
@@ -115,7 +126,6 @@ fun LessonExerciseScreen(
         }
     }
 }
-
 
 
 //@Preview
