@@ -412,7 +412,6 @@ fun RegisterScreen(
                             disabledContainerColor = Color.Gray
                         ),
                         onClick = {
-                            Log.d("###API", "Tentando cadastrar")
                             onRegister()
                         }
                     ) {

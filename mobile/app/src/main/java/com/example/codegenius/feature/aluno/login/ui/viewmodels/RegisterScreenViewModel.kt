@@ -155,12 +155,13 @@ class RegisterScreenViewModel(
                 try {
                     state.value = RegisterScreenState.Loading
                     val response = repository.postRegister(register)
+                    Log.d("## Response", response.toString())
                     if (response.isSuccessful) {
                         state.value = RegisterScreenState.Success(data = response)
                         cleanTextFields()
                         onNavigateRegister()
                     } else {
-                        throw Exception("Erro desconhecido")
+                        throw Exception("Não consegui cadastrar!")
                     }
                 } catch (e: HttpException) {
                     val message = when (e.code()) {
@@ -170,10 +171,12 @@ class RegisterScreenViewModel(
                         else -> "Erro desconhecido"
                     }
                     state.value = RegisterScreenState.Error(message)
+                    Log.d("## ErroCatch1", state.value   .toString())
                 } catch (e: Exception) {
                     state.value = RegisterScreenState.Error(
                         e.message ?: "Erro desconhecido"
                     )
+                    Log.d("## ErroCatch2", state.value.toString())
                 }
             }
         }
