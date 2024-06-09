@@ -12,8 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
-import com.example.codegenius.feature.aluno.course.sampleData.contentQuestionMock
 import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonContentScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonExerciseScreen
@@ -25,7 +23,6 @@ import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseScre
 import com.example.codegenius.feature.aluno.login.ui.LoginActivity
 import com.example.codegenius.feature.aluno.navigation.AppDestination
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-
 
 class CourseActivity : ComponentActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +79,6 @@ class CourseActivity : ComponentActivity()  {
                     composable(AppDestination.LessonExercise.route) {
                         LessonExerciseScreen(
                             viewModel = getViewModel<CourseDetailViewModel>(),
-                            questionModel = contentQuestionMock,
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
                             },
@@ -118,7 +114,6 @@ class CourseActivity : ComponentActivity()  {
                     composable(AppDestination.LessonExerciseTest.route) {
                         LessonTestExerciseScreen(
                             viewModel = getViewModel<CourseDetailViewModel>(),
-                            questionModel = contentQuestionMock,
                             onNavigationLessonExercise = {
                                 navController.navigate(AppDestination.LessonExercise.route)
                             },

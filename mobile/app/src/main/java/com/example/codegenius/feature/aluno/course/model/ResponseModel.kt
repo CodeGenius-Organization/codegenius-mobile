@@ -3,8 +3,8 @@ package com.example.codegenius.feature.aluno.course.model
 import java.util.UUID
 
 data class ResponseModel (
-    val id : UUID,
-    val response : String,
-    val correct : Boolean,
-    val explanation : String
+    val fkQuestao : UUID,
+    val resposta : String,
+    val correta : Boolean,
+    val explicacao : String
 )

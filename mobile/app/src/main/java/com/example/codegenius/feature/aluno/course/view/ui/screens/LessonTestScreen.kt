@@ -25,13 +25,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
 import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
-import com.example.codegenius.feature.aluno.course.view.ui.states.HeartState
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
@@ -49,7 +46,7 @@ fun LessonTestScreen(
 ) {
     viewModel.getHeart();
 
-    val state by viewModel.heartState.observeAsState()
+    val state by viewModel.state.observeAsState()
     Scaffold(
         topBar = {
             Column {
@@ -84,18 +81,18 @@ fun LessonTestScreen(
                         color = Color.White
                     )
                     when (state) {
-                        is HeartState.Loading -> {
+                        is CourseDetailState.Loading -> {
                             Text(text = "Loading")
                         }
 
-                        is HeartState.Error -> {
+                        is CourseDetailState.Error -> {
                             Text(text = "Error")
                         }
 
-                        is HeartState.Success -> {
-                            val data = (state as HeartState.Success).data
+                        is CourseDetailState.HeartSuccess -> {
+                            val data = (state as CourseDetailState.HeartSuccess).data
                             Text(
-                                text = data.hearts.toString(),
+                                text = data.coracao.toString(),
                                 modifier = Modifier.padding(16.dp),
                                 color = Color.White
                             )

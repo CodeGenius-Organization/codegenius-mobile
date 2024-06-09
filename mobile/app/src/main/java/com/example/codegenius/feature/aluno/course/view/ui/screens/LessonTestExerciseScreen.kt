@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
-import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,17 +22,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.R
-import com.example.codegenius.feature.aluno.course.model.QuestionModel
-import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
-import com.example.codegenius.feature.aluno.course.sampleData.contentQuestionMock
-import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.ui.components.NavigationbarCourse
-import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import java.util.UUID
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -44,7 +37,6 @@ fun LessonTestExerciseScreen(
     onNavigationLessonContent: () -> Unit = {},
     onNavigationLessonExercise: () -> Unit = {},
     onLogout: () -> Unit,
-    questionModel: List<QuestionModel>
 ) {
     val selectedResponseMap = remember { mutableMapOf<UUID, UUID?>() }
 
@@ -81,35 +73,35 @@ fun LessonTestExerciseScreen(
                     color = Color.White
                 )
                 LazyColumn {
-                    itemsIndexed(questionModel) { index, question ->
-                        Text(
-                            text = "Questão ${index + 1}- ${question.statement}",
-                            modifier = Modifier.padding(16.dp),
-                            color = Color.White
-                        )
-                        question.responses.forEach { response ->
-                            Row(
-                                modifier = Modifier.padding(top = 8.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Checkbox(
-                                    checked = selectedResponseMap[question.id] == response.id,
-                                    onCheckedChange = {
-                                        selectedResponseMap[question.id] = response.id
-                                    },
-                                    colors = CheckboxDefaults.colors(
-                                        checkedColor = Color.White,
-                                        uncheckedColor = Color.White
-                                    )
-                                )
-                                Text(
-                                    text = response.response,
-                                    modifier = Modifier.padding(start = 8.dp),
-                                    color = Color.White
-                                )
-                            }
-                        }
-                    }
+//                    itemsIndexed(questionModel) { index, question ->
+//                        Text(
+//                            text = "Questão ${index + 1}- ${question.statement}",
+//                            modifier = Modifier.padding(16.dp),
+//                            color = Color.White
+//                        )
+//                        question.responses.forEach { response ->
+//                            Row(
+//                                modifier = Modifier.padding(top = 8.dp),
+//                                verticalAlignment = Alignment.CenterVertically
+//                            ) {
+//                                Checkbox(
+//                                    checked = selectedResponseMap[question.id] == response.id,
+//                                    onCheckedChange = {
+//                                        selectedResponseMap[question.id] = response.id
+//                                    },
+//                                    colors = CheckboxDefaults.colors(
+//                                        checkedColor = Color.White,
+//                                        uncheckedColor = Color.White
+//                                    )
+//                                )
+//                                Text(
+//                                    text = response.response,
+//                                    modifier = Modifier.padding(start = 8.dp),
+//                                    color = Color.White
+//                                )
+//                            }
+//                        }
+//                    }
                 }
                 Box(
                     modifier = Modifier

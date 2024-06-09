@@ -48,11 +48,11 @@ class CourseDetailRepositoryImpl: ICourseDetailRepository {
             .create(CourseDetailService::class.java)
         return api.postFeedback(feedback, Util.getInstance().authToken.token);
     }
-    override suspend fun getListExercices(lessonContentId: UUID): Response<List<QuestionModel>> {
+    override suspend fun getListExercices(): Response<List<QuestionModel>> {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
-        return api.getListExercices(lessonContentId, Util.getInstance().authToken.token);
+        return api.getListExercices(Util.getInstance().lessonContent.id, "Bearer "+ Util.getInstance().authToken.token);
     }
 
 }

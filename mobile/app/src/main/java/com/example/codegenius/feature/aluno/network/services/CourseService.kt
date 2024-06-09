@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
 
-interface CourseService {
+interface  CourseService {
     @GET("course/courses/")
     suspend fun getCourses(
         @Header("Authorization") authToken: String

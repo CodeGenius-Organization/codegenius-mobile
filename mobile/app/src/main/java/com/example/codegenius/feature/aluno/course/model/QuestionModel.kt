@@ -7,6 +7,6 @@ data class QuestionModel (
     val answer: String,
     val statement : String,
     val testQuestion : Boolean,
-    val lessonContent : UUID,
-    val responses : List<ResponseModel>
+    val lesson_content : UUID,
+    val respostas : List<ResponseModel>
 )

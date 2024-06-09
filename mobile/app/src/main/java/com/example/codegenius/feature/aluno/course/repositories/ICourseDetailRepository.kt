@@ -14,5 +14,5 @@ interface ICourseDetailRepository {
     suspend fun getCourse(): Response<CourseDetailModule>
     suspend fun postResultTest(resultExam: ResultTestModel): Response<Void>
     suspend fun postFeedback(feedback: FeedbackModel): Response<Void>
-    suspend fun getListExercices(lessonContentId: UUID): Response<List<QuestionModel>>
+    suspend fun getListExercices(): Response<List<QuestionModel>>
 }

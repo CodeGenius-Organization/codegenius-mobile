@@ -11,16 +11,14 @@ import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.feature.aluno.course.model.ModuleModel
-import com.example.codegenius.feature.aluno.course.sampleData.contentModuleMock
 import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 
 @Composable
 fun ModuleDrawer(
     modifier: Modifier = Modifier,
-    moduleModel: List<ModuleModel>,
+    moduleModel: Set<ModuleModel>,
     onNavigationLessonContent : () -> Unit = {}
 ) {
     ModalDrawerSheet (

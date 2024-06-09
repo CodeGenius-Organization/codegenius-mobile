@@ -8,7 +8,6 @@ import com.example.codegenius.feature.aluno.course.model.FeedbackModel
 import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import com.example.codegenius.feature.aluno.course.repositories.ICourseDetailRepository
 import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
-import com.example.codegenius.feature.aluno.course.view.ui.states.HeartState
 import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -19,18 +18,16 @@ class CourseDetailViewModel(
 ) : ViewModel() {
 
     val state = MutableLiveData<CourseDetailState>(CourseDetailState.Loading)
-    val heartState = MutableLiveData<HeartState>(HeartState.Loading)
 
     fun getHeart() {
         viewModelScope.launch {
             try {
-                heartState.value = HeartState.Loading
+                state.value = CourseDetailState.Loading
                 val response = repository.getHeart()
                 if (response.isSuccessful) {
                     response.body()?.let { hearts ->
-                        heartState.value = HeartState.Success(data = hearts)
+                        state.value = CourseDetailState.HeartSuccess(data = hearts)
                         // Guardar no util
-                        Log.d("##Get Heart", hearts.toString())
                     }
                         ?: throw Exception("Sem vidas cadastradas!")
                 } else {
@@ -44,12 +41,12 @@ class CourseDetailViewModel(
                     else -> "Catch - Erro desconhecido"
                 }
                 state.value = CourseDetailState.Error(message)
-                Log.d("## Errinho", e.toString())
+                Log.d("## ErroHeart", e.toString())
             }catch (e: Exception) {
                 state.value = CourseDetailState.Error(
                     e.message ?: "Erro desconhecido"
                 )
-                Log.d("## Errinho", e.toString())
+                Log.d("## ErroHeart", e.toString())
             }
         }
     }
@@ -83,12 +80,10 @@ class CourseDetailViewModel(
             try {
                 state.value = CourseDetailState.Loading
                 val response = repository.getCourse()
-                Log.d("## Response", "${response}")
                 if (response.isSuccessful) {
                     response.body()?.let { detail ->
-                        state.value = CourseDetailState.Success(data = detail)
-                        Util.getInstance().modules = detail.modules.toList()
-                        Log.d("## CourseDetail",  detail.toString())
+                        state.value = CourseDetailState.CourseSuccess(data = detail)
+                        Util.getInstance().modules = detail.modules
                     }
                         ?: throw Exception("Sem detalhes do curso!")
                 } else {
@@ -102,12 +97,12 @@ class CourseDetailViewModel(
                     else -> "Catch - Erro desconhecido"
                 }
                 state.value = CourseDetailState.Error(message)
-                Log.d("## Errinho", e.toString())
+                Log.d("## Erro Course", e.toString())
             }  catch (e: Exception) {
                 state.value = CourseDetailState.Error(
                     e.message ?: "Erro desconhecido"
                 )
-                Log.d("## Errinho", e.toString())
+                Log.d("## Erro Course", e.toString())
             }
         }
     }
@@ -153,15 +148,19 @@ class CourseDetailViewModel(
 
 
     }
-    fun getListExercices(lessonContentId: UUID){
+    fun getListExercices(){
         viewModelScope.launch {
             try {
-                val response = repository.getListExercices(lessonContentId)
+                state.value = CourseDetailState.Loading
+                val response = repository.getListExercices()
+                Log.d("## Response", "${response}")
                 if (response.isSuccessful) {
-                    response.body()?.let { detail ->
-                        Log.d("##Get Course", detail.toString())
+                    response.body()?.let { listExercices ->
+                        state.value = CourseDetailState.ExercicesSuccess(data = listExercices)
+                        Util.getInstance().listExercices = listExercices
+                        Log.d("## ListExercices",  listExercices.toString())
                     }
-                        ?: throw Exception("Sem cursos cadastrados!")
+                        ?: throw Exception("Sem questões cadastrados!")
                 } else {
                     throw Exception("Erro desconhecido")
                 }
@@ -170,8 +169,15 @@ class CourseDetailViewModel(
                     400 -> "Login Inválido"
                     404 -> "Email ou senha incorretos"
                     502 -> "Timeout"
-                    else -> "Erro desconhecido"
+                    else -> "Catch - Erro desconhecido"
                 }
+                state.value = CourseDetailState.Error(message)
+                Log.d("## Errinho", e.toString())
+            }  catch (e: Exception) {
+                state.value = CourseDetailState.Error(
+                    e.message ?: "Erro desconhecido"
+                )
+                Log.d("## Errinho", e.toString())
             }
         }
     }

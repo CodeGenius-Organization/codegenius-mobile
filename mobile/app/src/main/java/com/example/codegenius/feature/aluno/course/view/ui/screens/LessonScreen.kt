@@ -52,13 +52,13 @@ fun LessonScreen(
                 Text(text = "Error")
             }
 
-            is CourseDetailState.Success -> {
-                val data = (state as CourseDetailState.Success).data
+            is CourseDetailState.CourseSuccess -> {
+                val data = (state as CourseDetailState.CourseSuccess).data
                 ModalNavigationDrawer(
                     modifier = Modifier.padding(it),
                     drawerContent = {
                         ModuleDrawer(
-                            moduleModel = data.modules.toList(),
+                            moduleModel = data.modules,
                             onNavigationLessonContent = onNavigationLessonContent
                         )
                     }
@@ -69,7 +69,7 @@ fun LessonScreen(
                             .background(BackgroundGenius)
                             .padding(top = 10.dp)
                     ) {
-                        val data = (state as CourseDetailState.Success).data
+                        val data = (state as CourseDetailState.CourseSuccess).data
                         Column(
                             modifier = Modifier
                                 .padding(
