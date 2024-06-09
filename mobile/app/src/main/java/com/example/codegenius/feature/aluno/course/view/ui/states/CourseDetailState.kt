@@ -19,6 +19,10 @@ sealed interface CourseDetailState {
         val data: List<QuestionModel>
     ) : CourseDetailState
 
+    data class PostResultSuccess(
+        val data: Void
+    ) : CourseDetailState
+
     data class Error(
         val message: String
     ) : CourseDetailState

@@ -189,18 +189,19 @@ fun LessonExerciseScreen(
 data class UserResponse(
     val questionIndex: Int,
     val responseIndex: Int,
-    val isChecked: Boolean
+    val isChecked: Boolean,
+    val isCorrect: Boolean?
 )
 
 private fun updateUserResponses(
     userResponses: MutableState<List<UserResponse>>,
     questionIndex: Int,
     responseIndex: Int,
-    formsCorrection: MutableState<Boolean>
+    formsCorrection: MutableState<Boolean>,
 ) {
     val currentResponses = userResponses.value.toMutableList()
     currentResponses.removeAll { it.questionIndex == questionIndex }
-    currentResponses.add(UserResponse(questionIndex, responseIndex, true))
+    currentResponses.add(UserResponse(questionIndex, responseIndex, true, null))
     userResponses.value = currentResponses
     formsCorrection.value = false
 }

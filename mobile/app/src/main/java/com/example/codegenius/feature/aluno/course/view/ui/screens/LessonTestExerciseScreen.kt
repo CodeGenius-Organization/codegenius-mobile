@@ -1,7 +1,9 @@
 package com.example.codegenius.feature.aluno.course.view.ui.screens
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.R
+import com.example.codegenius.feature.aluno.course.model.ResultTestModel
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModalConfirmacao
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
 import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
@@ -40,7 +43,11 @@ import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDeta
 import com.example.codegenius.feature.aluno.shared.ui.components.Navigationbar
 import com.example.codegenius.feature.aluno.shared.util.singleton.Util
 import kotlinx.coroutines.delay
+import java.time.LocalDate.now
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LessonTestExerciseScreen(
@@ -67,8 +74,10 @@ fun LessonTestExerciseScreen(
         mutableStateOf(false)
     }
 
+    val count = remember { mutableStateOf(true) }
+
     LaunchedEffect(Unit) {
-        while (true) {
+        while (count.value) {
             delay(1000) // Espera 1 segundo
             elapsedTime++
         }
@@ -143,7 +152,8 @@ fun LessonTestExerciseScreen(
                                                     userResponses,
                                                     indexQuestion,
                                                     indexResponse,
-                                                    formsCorrection
+                                                    formsCorrection,
+                                                    response.correta
                                                 )
                                             },
                                             enabled = checkboxesEnabled.value
@@ -188,6 +198,7 @@ fun LessonTestExerciseScreen(
                                 onClick = {
                                     formsCorrection.value = true
                                     checkboxesEnabled.value = false
+                                    count.value = false
                                     showModal.value = true
                                 }
                             ) {
@@ -205,11 +216,37 @@ fun LessonTestExerciseScreen(
         ModalConfirmacao(
             onClose = {
                 showModal.value = false
+            },
+            onConfirm = {
+                val result = ResultTestModel(
+                    Util.getInstance().dataUser.id,
+                    Util.getInstance().lessonContent.id,
+                    countCorrect(userResponses.value),
+                    nowFormatted(),
+                    elapsedTime.toString()
+                )
+                viewModel.postResultTest(result, onNavigationLessonContent)
             }
         )
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
+private fun nowFormatted(): String {
+    val current = LocalDateTime.now()
+    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+    return current.format(formatter)
+}
+
+private fun countCorrect(response: List<UserResponse>): Int {
+    var correctCount = 0
+    response.forEach {
+        if (it.isCorrect == true && it.isChecked) {
+            correctCount++
+        }
+    }
+    return correctCount * (100 / 5)
+}
 
 private fun Long.formatElapsedTime(): String {
     val hours = this / 3600
@@ -222,11 +259,12 @@ private fun updateUserResponses(
     userResponses: MutableState<List<UserResponse>>,
     questionIndex: Int,
     responseIndex: Int,
-    formsCorrection: MutableState<Boolean>
+    formsCorrection: MutableState<Boolean>,
+    isCorrect: Boolean
 ) {
     val currentResponses = userResponses.value.toMutableList()
     currentResponses.removeAll { it.questionIndex == questionIndex }
-    currentResponses.add(UserResponse(questionIndex, responseIndex, true))
+    currentResponses.add(UserResponse(questionIndex, responseIndex, true, isCorrect))
     userResponses.value = currentResponses
     formsCorrection.value = false
 }

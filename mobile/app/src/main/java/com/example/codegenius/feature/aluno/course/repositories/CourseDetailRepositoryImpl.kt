@@ -39,7 +39,7 @@ class CourseDetailRepositoryImpl: ICourseDetailRepository {
         val api = ApiConfig
             .getInstance()
             .create(CourseDetailService::class.java)
-        return api.postResultTest(resultExam, Util.getInstance().authToken.token);
+        return api.postResultTest(resultExam, "Bearer ${Util.getInstance().authToken.token}");
     }
 
     override suspend fun postFeedback(feedback: FeedbackModel): Response<Void> {

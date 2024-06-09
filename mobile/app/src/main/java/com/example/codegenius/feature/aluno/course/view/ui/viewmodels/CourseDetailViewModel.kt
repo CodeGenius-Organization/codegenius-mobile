@@ -107,12 +107,14 @@ class CourseDetailViewModel(
         }
     }
 
-    fun postResultTest(resultExam: ResultTestModel) {
+    fun postResultTest(resultExam: ResultTestModel, onNavigateLessonContent: () -> Unit) {
         viewModelScope.launch {
             try {
+                state.value = CourseDetailState.Loading
                 val response = repository.postResultTest(resultExam)
+                Log.d("## Post ", response.toString())
                 if (response.isSuccessful) {
-                        Log.d("##Get Course", "Postei os resultados!")
+                    onNavigateLessonContent()
                 } else {
                     throw Exception("Erro desconhecido")
                 }
@@ -123,6 +125,13 @@ class CourseDetailViewModel(
                     502 -> "Timeout"
                     else -> "Erro desconhecido"
                 }
+                state.value = CourseDetailState.Error(message)
+                Log.d("## Erro Course", e.toString())
+            }   catch (e: Exception) {
+                state.value = CourseDetailState.Error(
+                    e.message ?: "Erro desconhecido"
+                )
+                Log.d("## Erro Course", e.toString())
             }
         }
     }
