@@ -54,6 +54,13 @@
     <string name="register_accept_message">Li e concordo com os </string>
     <string name="register_term_use">Termos de Uso</string>
 
+    <!-- Modal de Conclusão -->
+    <string name="modal_conclued">CONFIRMAÇÃO"</string>
+    <string name="modal_conclued_title">TEM CERTEZA QUE DESEJA  FINALIZAR?</string>
+    <string name="modal_conclued_subtitle">Ao clicar em ´Sim´ a prova será concluída.</string>
+    <string name="modal_conclued_button_close">Cancelar</string>
+    <string name="modal_conclued_button_confirm">Sim</string>
+
     <!-- Termo de Uso -->
     <string name="dialog_button_dismiss">FECHAR</string>
     <string name="dialog_button_accept">ACEITAR</string>

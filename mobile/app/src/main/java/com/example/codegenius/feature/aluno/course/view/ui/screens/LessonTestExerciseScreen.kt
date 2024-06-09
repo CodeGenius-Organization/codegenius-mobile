@@ -33,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.codegenius.R
+import com.example.codegenius.feature.aluno.course.view.ui.components.ModalConfirmacao
 import com.example.codegenius.feature.aluno.course.view.ui.components.ModuleDrawer
 import com.example.codegenius.feature.aluno.course.view.ui.states.CourseDetailState
 import com.example.codegenius.feature.aluno.course.view.ui.viewmodels.CourseDetailViewModel
@@ -61,6 +62,10 @@ fun LessonTestExerciseScreen(
     val checkboxesEnabled = remember { mutableStateOf(true) }
 
     var elapsedTime by remember { mutableStateOf(0L) }
+
+    val showModal = remember {
+        mutableStateOf(false)
+    }
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -181,8 +186,9 @@ fun LessonTestExerciseScreen(
                         ) {
                             Button(
                                 onClick = {
-                                        formsCorrection.value = true
-                                        checkboxesEnabled.value = false
+                                    formsCorrection.value = true
+                                    checkboxesEnabled.value = false
+                                    showModal.value = true
                                 }
                             ) {
                                 Text(
@@ -193,6 +199,13 @@ fun LessonTestExerciseScreen(
                     }
                 }
             }
+        }
+        if (showModal.value) {
+            ModalConfirmacao(
+                onClose = {
+                    showModal.value = false
+                }
+            )
         }
     }
 }

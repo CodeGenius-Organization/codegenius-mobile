@@ -14,3 +14,6 @@ val pinkGenius = Color(0xFFD868FF)
 val purpleGenius = Color(0XFF7F60BC)
 val BackgroundGenius = Color(0XFF0C0F1A)
 val PlaceholderGenius = Color(0xFFC9C9C9)
+
+val blueDarkGenius = Color(0xFF181D31)
+val blueGenius = Color(0xFF333B67)

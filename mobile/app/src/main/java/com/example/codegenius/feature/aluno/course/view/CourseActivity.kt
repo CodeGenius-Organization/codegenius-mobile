@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.codegenius.feature.aluno.course.view.ui.components.ModalConfirmacao
 import com.example.codegenius.feature.aluno.course.view.ui.screens.CourseScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonContentScreen
 import com.example.codegenius.feature.aluno.course.view.ui.screens.LessonExerciseScreen
