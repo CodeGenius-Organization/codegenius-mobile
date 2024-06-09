@@ -32,10 +32,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.example.codegenius.R
 import com.example.codegenius.feature.aluno.shared.ui.theme.blueDarkGenius
 import com.example.codegenius.feature.aluno.shared.ui.theme.blueGenius
@@ -45,14 +47,15 @@ fun ModalConfirmacao(
     onClose : () -> Unit = {},
     onConfirm : () -> Unit = {}
 ) {
-    Dialog(onDismissRequest = { onClose() }) {
+    Dialog(
+        onDismissRequest = { onClose() }) {
         Surface(
             shape = RoundedCornerShape(8.dp),
             shadowElevation = 4.dp
         ) {
             Box(
                 modifier = Modifier
-                    .height(456.dp)
+                    .height(500.dp)
                     .fillMaxWidth()
                     .background(Color.White)
             ) {
@@ -100,11 +103,13 @@ fun ModalConfirmacao(
                             modifier = Modifier.padding(10.dp),
                             color = blueDarkGenius,
                             text = stringResource(R.string.modal_conclued_title),
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
                         )
                         Text(
                             color = blueDarkGenius,
-                            text = stringResource(R.string.modal_conclued_subtitle)
+                            text = stringResource(R.string.modal_conclued_subtitle),
+                            textAlign = TextAlign.Center
                         )
                         HorizontalDivider(
                             modifier = Modifier.padding(
