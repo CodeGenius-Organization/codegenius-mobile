@@ -200,13 +200,13 @@ fun LessonTestExerciseScreen(
                 }
             }
         }
-        if (showModal.value) {
-            ModalConfirmacao(
-                onClose = {
-                    showModal.value = false
-                }
-            )
-        }
+    }
+    if (showModal.value) {
+        ModalConfirmacao(
+            onClose = {
+                showModal.value = false
+            }
+        )
     }
 }
 

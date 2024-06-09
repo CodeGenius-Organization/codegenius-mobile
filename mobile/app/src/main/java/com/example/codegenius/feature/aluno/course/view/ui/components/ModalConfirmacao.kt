@@ -45,7 +45,7 @@ fun ModalConfirmacao(
     onClose : () -> Unit = {},
     onConfirm : () -> Unit = {}
 ) {
-    Dialog(onDismissRequest = { /*TODO*/ }) {
+    Dialog(onDismissRequest = { onClose() }) {
         Surface(
             shape = RoundedCornerShape(8.dp),
             shadowElevation = 4.dp
