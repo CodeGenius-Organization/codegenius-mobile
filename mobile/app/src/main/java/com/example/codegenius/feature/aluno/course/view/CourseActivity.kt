@@ -114,9 +114,6 @@ class CourseActivity : ComponentActivity()  {
                     composable(AppDestination.LessonExerciseTest.route) {
                         LessonTestExerciseScreen(
                             viewModel = getViewModel<CourseDetailViewModel>(),
-                            onNavigationLessonExercise = {
-                                navController.navigate(AppDestination.LessonExercise.route)
-                            },
                             onNavigationLessonContent = {
                                 navController.navigate(AppDestination.LessonContent.route)
                             },
