@@ -15,7 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", "\"http://26.183.166.115:8080/\"")
+        buildConfigField("String", "BASE_URL", "\"https://codegenius.ddns.net/api/\"")
     }
 
 
