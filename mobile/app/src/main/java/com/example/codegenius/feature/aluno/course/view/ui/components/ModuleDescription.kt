@@ -51,12 +51,12 @@ fun ModuleDescription(
     }
 }
 
-@Preview
-@Composable
-fun ModuleDescriptionPreview() {
-    ModuleDescription(
-        lessonContentModel = contentModuleMock.get(0)
-            .lessons.get(0)
-            .lessonContent
-    )
-}
+//@Preview
+//@Composable
+//fun ModuleDescriptionPreview() {
+//    ModuleDescription(
+//        lessonContentModel = contentModuleMock.get(0)
+//            .lessons.get(0)
+//            .lessonContent
+//    )
+//}

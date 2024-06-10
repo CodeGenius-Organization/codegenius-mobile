@@ -17,3 +17,5 @@ val PlaceholderGenius = Color(0xFFC9C9C9)
 
 val blueDarkGenius = Color(0xFF181D31)
 val blueGenius = Color(0xFF333B67)
+
+val blueLightGenius = Color(0xFF4476E0)

@@ -53,11 +53,11 @@ fun ModuleContentList(
     }
 }
 
-@Preview
-@Composable
-fun ModuleContentListPreview() {
-    ModuleContentList(
-        title = "Modulo",
-        moduleModel = contentModuleMock.get(0)
-    )
-}
+//@Preview
+//@Composable
+//fun ModuleContentListPreview() {
+//    ModuleContentList(
+//        title = "Modulo",
+//        moduleModel = contentModuleMock.get(0)
+//    )
+//}

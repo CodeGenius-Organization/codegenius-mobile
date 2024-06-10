@@ -5,7 +5,7 @@ import com.example.codegenius.feature.aluno.course.model.ModuleLessonModel
 import com.example.codegenius.feature.aluno.course.model.ModuleModel
 import java.util.UUID
 
-val contentModuleMock = listOf(
+val contentModuleMock = setOf(
     ModuleModel(
         id = UUID.fromString("701cc766-1119-41e6-b6fd-b9b5013cecfa"),
         moduleName = "Introdução ao Java",

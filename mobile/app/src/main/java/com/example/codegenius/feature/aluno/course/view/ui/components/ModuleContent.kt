@@ -68,11 +68,11 @@ fun LessonContent(lesson: ModuleLessonModel, order: Int) {
     }
 }
 
-@Preview
-@Composable
-fun ModuleContentPreview() {
-    ModuleContent(
-        order = 1,
-        moduleLessonModel = contentModuleMock.get(0).lessons.get(0)
-    )
-}
+//@Preview
+//@Composable
+//fun ModuleContentPreview() {
+//    ModuleContent(
+//        order = 1,
+//        moduleLessonModel = contentModuleMock.get(0).lessons.get(0)
+//    )
+//}
