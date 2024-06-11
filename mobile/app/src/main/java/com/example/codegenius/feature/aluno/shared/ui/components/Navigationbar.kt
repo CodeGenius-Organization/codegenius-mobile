@@ -105,7 +105,7 @@ fun Navigationbar(
                     }
                 ) {
                     Text(
-                        text = stringResource(R.string.dialog_button_accept),
+                        text = stringResource(R.string.dialog_button_quit),
                         color = Color.Black,
                         fontSize = 14.sp,
                         fontWeight = FontWeight(700),

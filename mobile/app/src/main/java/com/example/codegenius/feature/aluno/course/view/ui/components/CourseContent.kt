@@ -20,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -43,6 +44,19 @@ fun CourseContent(
     courseModel: CourseModel,
     onNavigateToLesson : () -> Unit = {}
 ) {
+
+    val nomes = listOf("Ana Amelia", "Bruno Benjamin", "Carlos Costa", "Daniela Dias", "Eduardo Edgar", "Fernanda Ferreira", "Gabriel Guedes", "Helena Hwak", "Juliana Jordan")
+    val nomeAleatorio = remember { nomes[gerarIndiceAleatorio(nomes.size)] }
+    val score = remember {
+        gerarNumeroAleatorio(1,5)
+    }
+    val scoreDecimal = remember {
+        gerarNumeroAleatorio(0,9)
+    }
+    val avaliations = remember {
+        gerarNumeroAleatorio(0,2000)
+    }
+
     Surface(
         shape = RoundedCornerShape(8.dp),
         shadowElevation = 4.dp,
@@ -69,13 +83,6 @@ fun CourseContent(
                     .height(130.dp)
                     .fillMaxWidth()
             ) {
-                Image(
-                    painter = painterResource(R.drawable.mask_group),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
                 Image(
                     painter = painterResource(R.drawable.mask_group),
                     contentDescription = null,
@@ -130,7 +137,7 @@ fun CourseContent(
                     )
                     Text(
                         modifier = Modifier.padding(start = 3.dp),
-                        text = "VICTOR DANIEL",
+                        text = nomeAleatorio,
                         color = Color.White,
                         style = MaterialTheme.typography.labelMedium,
                         fontSize = 10.sp,
@@ -138,7 +145,7 @@ fun CourseContent(
                     )
                 }
                 Text(
-                    text = "Em andamento",
+                    text = "Não Iniciado",
                     color = Color.White,
                     style = MaterialTheme.typography.labelMedium,
                     fontSize = 10.sp,
@@ -154,7 +161,7 @@ fun CourseContent(
                         contentDescription = null
                     )
                     Text(
-                        text = "4.0 (1963)",
+                        text = "${score}.${if(score == 5) 0 else scoreDecimal} (${avaliations})",
                         color = Color.White,
                         style = MaterialTheme.typography.labelMedium,
                         fontSize = 10.sp,
@@ -164,6 +171,14 @@ fun CourseContent(
             }
         }
     }
+}
+
+private fun gerarIndiceAleatorio(tamanho: Int): Int {
+    return (0 until tamanho).random()
+}
+
+private fun gerarNumeroAleatorio(min: Int, max: Int): Int {
+    return (min..max).random()
 }
 
 @Preview

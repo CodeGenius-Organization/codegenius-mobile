@@ -63,6 +63,7 @@
 
     <!-- Termo de Uso -->
     <string name="dialog_button_dismiss">FECHAR</string>
+    <string name="dialog_button_quit">SAIR</string>
     <string name="dialog_button_accept">ACEITAR</string>
     <string name="dialog_title_term"> Termos e Condições Gerais de Uso e Política de Privacidade da Plataforma CodeGenius</string>
     <string name="dialog_body_term"> Os serviços da plataforma CodeGenius são fornecidos pela pessoa jurídica MindTech, com nome fantasia CodeGenius, inscrita no CNPJ sob o nº 89.007.517/0001-16, titular da propriedade intelectual sobre software, website, aplicativos, conteúdos e demais ativos relacionados à plataforma CodeGenius.

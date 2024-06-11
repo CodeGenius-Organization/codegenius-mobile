@@ -154,15 +154,13 @@ class CourseDetailViewModel(
                 }
             }
         }
-
-
     }
     fun getListExercices(){
         viewModelScope.launch {
             try {
                 state.value = CourseDetailState.Loading
                 val response = repository.getListExercices()
-                Log.d("## Response", "${response}")
+                Log.d("## Rsp", response.toString())
                 if (response.isSuccessful) {
                     response.body()?.let { listExercices ->
                         state.value = CourseDetailState.ExercicesSuccess(data = listExercices)
@@ -186,7 +184,7 @@ class CourseDetailViewModel(
                 state.value = CourseDetailState.Error(
                     e.message ?: "Erro desconhecido"
                 )
-                Log.d("## Errinho", e.toString())
+                Log.d("## Errinho2", e.message.toString())
             }
         }
     }

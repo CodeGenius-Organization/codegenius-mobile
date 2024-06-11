@@ -23,6 +23,7 @@ class CourseScreenViewModel(
             try {
                 state.value = CourseScreenState.Loading
                 val response = repository.getCourses()
+                Log.d("## Api", "${response.body()}")
                 if (response.isSuccessful) {
                     response.body()?.let { listCourses->
                         state.value = CourseScreenState.Success(data = listCourses)
